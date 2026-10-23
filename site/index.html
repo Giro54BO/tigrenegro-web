@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#382f2d" />
+    <meta name="description" content="TigreNegro Specialty Coffee. Un café con propósito de altísima calidad, cultivado en la reserva Yanapuma, junto al Parque Nacional Amboró." />
+    <title>TigreNegro · Specialty Coffee</title>
+    <link rel="icon" href="media/logo/dot.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&amp;family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..800,0,0&amp;family=Tenor+Sans&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="header-brand" href="#inicio" aria-label="TigreNegro, ir al inicio">
+          <img class="brand-dot" src="media/logo/dot.svg" alt="" />
+          <span class="logo-mask" data-header-logo></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+          <a href="#diferencia">La diferencia</a>
+          <a href="#terroir">Terroir y proceso</a>
+          <a href="#variedades">Variedades</a>
+        </nav>
+        <a class="button button-small header-cta" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span class="sr-only">Abrir menú</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Navegación móvil">
+        <a href="#diferencia">La diferencia <span aria-hidden="true">↘</span></a>
+        <a href="#terroir">Terroir y proceso <span aria-hidden="true">↘</span></a>
+        <a href="#variedades">Variedades <span aria-hidden="true">↘</span></a>
+      </nav>
+      <a class="button button-cream" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
+      <p>Volcanes · Amboró · Bolivia</p>
+    </div>
+
+    <!-- The hero wordmark flies from the hero into the header while scrolling (js/main.js) -->
+    <div class="flight-logo" aria-hidden="true" data-flight><img class="brand-dot" src="media/logo/dot.svg" alt="" /><span class="logo-mask"></span></div>
+
+    <main id="contenido">
+      <section class="hero" id="inicio" aria-label="TigreNegro Specialty Coffee">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/img/hero-poster.webp">
+          <source src="media/video/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-scrim"></div>
+        <div class="hero-content container">
+          <p class="eyebrow">Volcanes · Amboró · Bolivia</p>
+          <h1 class="hero-logo" data-hero-logo>
+            <img class="brand-dot" src="media/logo/dot.svg" alt="" />
+            <span class="logo-mask"></span>
+            <span class="sr-only">TigreNegro Specialty Coffee</span>
+          </h1>
+          <p class="hero-tagline">Intensidad que no necesita anunciarse.</p>
+          <div class="hero-actions">
+            <a class="button button-cream" href="#variedades">Ver variedades <span aria-hidden="true">↘</span></a>
+            <a class="text-link" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-bottom container" aria-hidden="true">
+          <span>1% cultivado</span><span class="hero-line"></span><span>99% conservado</span>
+          <span class="scroll-cue">Desliza <b>↓</b></span>
+        </div>
+      </section>
+
+      <section class="statement-band image-band" aria-labelledby="statement-title">
+        <img src="media/img/cultivo-sombra.webp" alt="Cafetales bajo sombra en la reserva Yanapuma" data-parallax loading="lazy" />
+        <div class="image-band-overlay"></div>
+        <div class="container statement-content">
+          <h2 id="statement-title" data-split>Un café con propósito de altísima calidad.</h2>
+          <p class="statement-subline" data-reveal>Nace para sostener la conservación de Yanapuma. Y por eso solo puede ser excepcional.</p>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Gesha</span><i></i><span>Acaia</span><i></i><span>Catucai</span><i></i><span>Arara</span><i></i><span>Castillo</span><i></i><span>IPR 103</span><i></i><span>Tupi</span><i></i><span>1% cultivado</span><i></i><span>99% conservado</span><i></i>
+          <span>Gesha</span><i></i><span>Acaia</span><i></i><span>Catucai</span><i></i><span>Arara</span><i></i><span>Castillo</span><i></i><span>IPR 103</span><i></i><span>Tupi</span><i></i><span>1% cultivado</span><i></i><span>99% conservado</span><i></i>
+        </div>
+      </div>
+
+      <section class="product-section section-light" id="producto" aria-labelledby="product-title">
+        <div class="container product-grid">
+          <div class="product-copy">
+            <p class="eyebrow" data-reveal>El producto</p>
+            <h2 id="product-title" class="display-heading" data-split>La montaña, en una bolsa.</h2>
+            <p class="lead" data-reveal>Variedades exóticas cultivadas bajo sombra, cosechadas a mano y llevadas hasta su mejor expresión en taza.</p>
+            <p data-reveal>Elige tu variedad y cómo la prefieres. Nuestro equipo de ventas te atiende por WhatsApp. Bolsas de 200 g, en grano o molido.</p>
+            <a class="button button-dark" href="#variedades" data-reveal>Explorar variedades <span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="product-visual">
+            <div class="product-glow" aria-hidden="true"></div>
+            <img src="media/img/bolsa.webp" alt="Bolsa de café TigreNegro de 200 gramos" data-scale loading="lazy" />
+            <div class="info-chip chip-top"><strong>Gesha</strong><span>Proceso natural</span></div>
+            <div class="info-chip chip-side"><strong>1.200–1.750</strong><span>msnm</span></div>
+            <div class="info-chip chip-bottom"><strong>200 g</strong><span>Cosecha manual</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="different-section section-dark" id="diferencia" aria-labelledby="different-title">
+        <div class="container">
+          <div class="section-intro different-intro">
+            <div>
+              <p class="eyebrow" data-reveal>La diferencia</p>
+              <h2 id="different-title" class="display-heading" data-split>Lo extraordinario se cultiva.</h2>
+            </div>
+            <p data-reveal>Entre la luz y la sombra, se mueve el jaguar. También el café que cultivamos.</p>
+          </div>
+          <div class="feature-grid">
+            <a class="feature-card feature-card-large" href="#variedades" data-reveal>
+              <div class="feature-image"><img src="media/img/cerezas.webp" alt="Rama de cafeto con cerezas maduras" loading="lazy" /></div>
+              <div class="feature-meta"><span>01 / 03</span><span class="arrow" aria-hidden="true">↘</span></div>
+              <h3>Variedades exóticas</h3>
+              <p>Un banco genético único en Bolivia, con variedades que hoy no se producen en el país.</p>
+            </a>
+            <a class="feature-card feature-card-offset" href="#terroir" data-reveal>
+              <div class="feature-image"><img src="media/img/terroir-dron.webp" alt="Vista aérea de la serranía junto al Parque Nacional Amboró" loading="lazy" /></div>
+              <div class="feature-meta"><span>02 / 03</span><span class="arrow" aria-hidden="true">↘</span></div>
+              <h3>Terroir único</h3>
+              <p>Tierra negra rica en materia orgánica, microclimas y la humedad del Amboró.</p>
+            </a>
+            <a class="feature-card feature-card-third" href="#terroir" data-reveal>
+              <div class="feature-image"><img src="media/img/secado.webp" alt="Camas de secado de café en la beneficiadora" loading="lazy" /></div>
+              <div class="feature-meta"><span>03 / 03</span><span class="arrow" aria-hidden="true">↘</span></div>
+              <h3>Beneficio propio</h3>
+              <p>Equipos Palini Alves, galpón artesanal con laboratorio y secador tipo invernadero.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="terroir-section section-cream" id="terroir" aria-labelledby="terroir-title">
+        <div class="container terroir-grid">
+          <div class="terroir-heading">
+            <p class="eyebrow" data-reveal>Terroir y proceso</p>
+            <h2 id="terroir-title" class="display-heading" data-split>De la tierra a la taza.</h2>
+            <p class="lead" data-reveal>Cultivamos al borde del bosque, entre 1.200 y 1.750 msnm, donde la humedad del Amboró y la tierra negra hacen posible una calidad singular.</p>
+            <p data-reveal>Tenemos la infraestructura, la experiencia y el conocimiento para llevar el café hasta su consumo final.</p>
+          </div>
+          <div class="process-list" data-reveal>
+            <details open>
+              <summary><span>01</span>Cultivo bajo sombra</summary>
+              <p>Sistema agroforestal en antiguos chacos que hoy reforestamos. Sembramos aprovechando un camino existente, sin tocar el bosque.</p>
+            </details>
+            <details>
+              <summary><span>02</span>Cosecha manual</summary>
+              <p>Solo cerezas maduras, recolectadas a mano, lote por lote.</p>
+            </details>
+            <details>
+              <summary><span>03</span>Beneficio</summary>
+              <p>Beneficiadora con equipos Palini Alves de última generación, junto a un galpón artesanal con laboratorio.</p>
+            </details>
+            <details>
+              <summary><span>04</span>Secado</summary>
+              <p>Proceso natural en un secador tipo invernadero, a su propio ritmo.</p>
+            </details>
+            <details>
+              <summary><span>05</span>Catación y filtrado</summary>
+              <p>Cada lote se evalúa en nuestro laboratorio. Trabajamos asociados al método de filtrado Graycano.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="varieties-section section-dark" id="variedades" aria-labelledby="varieties-title">
+        <div class="container">
+          <div class="section-intro varieties-intro">
+            <div>
+              <p class="eyebrow" data-reveal>El banco genético</p>
+              <h2 id="varieties-title" class="display-heading" data-split>Siete variedades. Una sola altura.</h2>
+            </div>
+            <p data-reveal>Toca una variedad para ver sus notas y pedirla. Unas veinte más están en camino.</p>
+          </div>
+          <div class="variety-grid">
+            <article class="variety-card" style="--glow: #ff7f82" data-variety="Gesha" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">01</span><span class="variety-name">Gesha</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Gesha</span><p>Dulce, natural y frutas tropicales</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #638c69" data-variety="Acaia" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">02</span><span class="variety-name">Acaia</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Acaia</span><p>Kiwi, tumbo y piña</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #f2a400" data-variety="Catucai" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">03</span><span class="variety-name">Catucai</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Catucai</span><p>Dulce de leche, papaya y mango</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #98669c" data-variety="Arara" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">04</span><span class="variety-name">Arara</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Arara</span><p>Dulce de leche, papaya y mango</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #ea7749" data-variety="Castillo" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">05</span><span class="variety-name">Castillo</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Castillo</span><p>Dulce, natural y frutas tropicales</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #6379c4" data-variety="IPR 103" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">06</span><span class="variety-name">IPR 103</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">IPR 103</span><p>Kiwi, tumbo y piña</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="variety-card" style="--glow: #72abae" data-variety="Tupi" data-reveal>
+              <button class="variety-front" type="button" aria-expanded="false"><span class="card-index">07</span><span class="variety-name">Tupi</span><span class="variety-process">Proceso natural</span><span class="card-hint" aria-hidden="true">Ver notas ↻</span></button>
+              <div class="variety-back"><span class="variety-name">Tupi</span><p>Jazmín, durazno y piña</p><a class="button button-cream button-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <div class="variety-card variety-next" data-reveal>
+              <span class="card-index">+20</span>
+              <p class="variety-next-title">Nuevas variedades exóticas</p>
+              <p>Llegan con la próxima cosecha. Las más especiales están por venir.</p>
+            </div>
+          </div>
+          <p class="wholesale-note" data-reveal>¿Tienes una cafetería o buscas café verde? Bolsas de 5 kg y lotes en verde. <a data-whatsapp data-message="Hola, tengo una cafetería y quiero información sobre bolsas de 5 kg o café verde TigreNegro." href="#">Escríbenos ↗</a></p>
+        </div>
+      </section>
+
+      <section class="purpose-band image-band" aria-labelledby="purpose-title">
+        <img src="media/img/reserva-dron.webp" alt="Bosque conservado de la reserva Yanapuma visto desde el aire" data-parallax loading="lazy" />
+        <div class="image-band-overlay"></div>
+        <div class="container purpose-content">
+          <p class="eyebrow" data-reveal>Café con propósito</p>
+          <h2 id="purpose-title" data-split>1% cultivado. 99% conservado.</h2>
+          <div class="purpose-bottom" data-reveal>
+            <p>Nos limitamos a cultivar como máximo el 1% del territorio que protegemos. Con tan poco espacio, la única forma de crecer es mejorar la calidad.</p>
+            <a class="button button-cream" href="https://giro54bo.github.io/yanapuma-web/" target="_blank" rel="noopener">Conoce Yanapuma <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-section section-light" id="cifras" aria-labelledby="stats-title">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow" data-reveal>En cifras</p>
+            <h2 id="stats-title" class="display-heading" data-split>Pequeño por diseño. Preciso por elección.</h2>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card" data-reveal><strong><span data-count="11">11</span></strong><span>hectáreas cultivadas</span></div>
+            <div class="stat-card" data-reveal><strong><span data-count="99">99</span>%</strong><span>del territorio conservado</span></div>
+            <div class="stat-card" data-reveal><strong><span data-count="7">7</span></strong><span>variedades hoy</span></div>
+            <div class="stat-card" data-reveal><strong>~<span data-count="20">20</span></strong><span>variedades en camino</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-section section-light" id="respaldo" aria-labelledby="proof-title">
+        <div class="container proof-grid">
+          <p class="eyebrow" id="proof-title" data-reveal>Respaldo</p>
+          <blockquote data-reveal>Bajo la dirección de Lean Coffee Management, quienes han trabajado con fincas ganadoras de Taza de Excelencia en El Salvador y Guatemala.</blockquote>
+        </div>
+      </section>
+
+      <section class="visit-band" aria-labelledby="visit-title">
+        <div class="container visit-inner">
+          <div><p class="eyebrow" data-reveal>Conoce el origen</p><h2 id="visit-title" data-split>Visita la reserva.</h2></div>
+          <a class="circle-link" href="https://giro54bo.github.io/yanapuma-web/#contacto" target="_blank" rel="noopener" data-reveal>Planifica tu visita a Yanapuma <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="closing-section section-dark" aria-labelledby="closing-title">
+        <div class="container closing-inner">
+          <p class="eyebrow" data-reveal>Quiet intensity</p>
+          <h2 id="closing-title" data-split>Tu próxima taza empieza aquí.</h2>
+          <a class="button button-cream" data-whatsapp href="#" data-reveal>Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="#inicio" aria-label="TigreNegro, volver al inicio"><img class="brand-dot" src="media/logo/dot.svg" alt="" /><span class="logo-mask"></span></a>
+        <div class="footer-links">
+          <div><span class="footer-label">Explora</span><a href="#diferencia">La diferencia</a><a href="#terroir">Terroir y proceso</a><a href="#variedades">Variedades</a></div>
+          <div><span class="footer-label">Conecta</span><a data-whatsapp href="#">WhatsApp ventas ↗</a><a href="https://instagram.com/tigrenegro.cafe" target="_blank" rel="noopener">Instagram ↗</a><a href="https://giro54bo.github.io/yanapuma-web/#contacto" target="_blank" rel="noopener">Planifica tu visita ↗</a></div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>Volcanes · Amboró · Valles Cruceños · Santa Cruz, Bolivia</p>
+        <p>© TigreNegro · Reserva Yanapuma</p>
+      </div>
+      <div class="footer-wordmark logo-mask logo-mask-name" aria-hidden="true"></div>
+    </footer>
+  </body>
+</html>

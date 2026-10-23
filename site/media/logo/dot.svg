@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+  <defs>
+    <radialGradient id="tone" cx="35%" cy="65%" r="70%">
+      <stop offset="0" stop-color="#8a7b68"/>
+      <stop offset=".55" stop-color="#a8957b"/>
+      <stop offset="1" stop-color="#c9b597"/>
+    </radialGradient>
+    <radialGradient id="fade" cx="36%" cy="64%" r="64%">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".78" stop-color="#fff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="core" cx="40%" cy="60%" r="45%"><stop offset="0" stop-color="#a8957b" stop-opacity=".55"/><stop offset="1" stop-color="#a8957b" stop-opacity="0"/></radialGradient>
+    <clipPath id="ball"><circle cx="50" cy="50" r="48"/></clipPath>
+    <mask id="edge"><rect width="100" height="100" fill="url(#fade)"/></mask>
+    <filter id="grain" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="4" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 14 -7.4" result="specks"/>
+      <feComposite in="SourceGraphic" in2="specks" operator="in"/>
+    </filter>
+  </defs>
+  <g clip-path="url(#ball)" mask="url(#edge)">
+    <rect width="100" height="100" fill="url(#tone)" filter="url(#grain)"/>
+    <rect width="100" height="100" fill="url(#core)"/>
+  </g>
+</svg>
