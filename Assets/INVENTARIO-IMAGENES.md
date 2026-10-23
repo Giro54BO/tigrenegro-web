@@ -11,8 +11,8 @@ Revisión visual del 23 de octubre de 2026. Las rutas son relativas a `Assets/im
 | `About us/YANAPUMA SEP93.jpg` | Cafetal bajo sombra | `cultivo-sombra.webp` (banda del mensaje central) |
 | `About us/YANAPUMA SEP98.jpg` | Rama con cerezas rojas | `cerezas.webp` (tarjeta «Variedades exóticas») |
 | `About us/YANAPUMA SEP95.jpg` | Persona junto a las camas de secado | `secado.webp` (tarjeta «Beneficio propio») |
-| `Product/Gemini_Generated_Image_9wial39wial39wia.jpeg` | Bolsa de 200 g sobre fondo claro | `bolsa.webp` |
-| `Product/Gemini_Generated_Image_9p36869p36869p36.jpeg` | Bolsa abierta con granos | `bolsa-granos.webp` (aún sin uso) |
+| `Product/Gemini_Generated_Image_9wial39wial39wia.jpeg` | Bolsa de 200 g sobre fondo claro | `bolsa.webp` (aún sin uso) |
+| `Product/Gemini_Generated_Image_9p36869p36869p36.jpeg` | Bolsa abierta con granos | `bolsa-granos.webp` (sección «El producto») |
 | `video/Yanapuma-Hero-3-web.mp4` | Video del hero | `media/video/hero.mp4` (recodificado) + `hero-poster.webp` |
 
 ## Disponibles, por tema

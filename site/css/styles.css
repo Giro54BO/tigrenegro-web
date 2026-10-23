@@ -55,6 +55,8 @@ p { text-wrap: pretty; }
 .button-cream:hover { background: #fff1e6; }
 .button-dark { color: var(--cream); background: var(--brown); }
 .button-dark:hover { background: var(--russet); }
+.button-outline { color: var(--brown); border-color: currentColor; background: transparent; }
+.button-outline:hover { color: var(--cream); background: var(--brown); }
 .text-link { display: inline-flex; align-items: center; gap: .7rem; padding-bottom: .4rem; border-bottom: 1px solid currentColor; font: .8rem var(--label); letter-spacing: .14em; text-transform: uppercase; }
 
 /* Logo: wordmark as a mask so it takes the text color; grain dot on top-left like the original */
@@ -175,6 +177,21 @@ p { text-wrap: pretty; }
 .process-list details[open] summary::after { transform: rotate(45deg); }
 .process-list details p { max-width: 32rem; margin: -.4rem 0 1.5rem 2.6rem; color: var(--taupe); }
 
+.inline-link { border-bottom: 1px solid currentColor; }
+
+/* Graycano */
+.graycano-section { padding: clamp(6rem, 11vw, 10rem) 0; }
+.graycano-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; }
+.graycano-visual { position: sticky; top: calc(var(--header-h) + 2rem); margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1rem; background: var(--brown); }
+.graycano-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 68% 50%; transform: scale(.85); will-change: transform; }
+.graycano-copy .lead { margin: 2rem 0 1.75rem; }
+.graycano-features { display: grid; gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+.graycano-features li { display: grid; grid-template-columns: minmax(9rem, .8fr) 1.2fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.graycano-features strong { font: 700 1.1rem/1.3 var(--display); }
+.graycano-features span { color: var(--taupe); font-size: .95rem; line-height: 1.55; }
+/* Stacked buttons that both stretch to the width of the wider one */
+.graycano-actions { display: inline-grid; gap: .75rem; margin-top: 2.25rem; }
+
 /* Varieties: dark labels with a colored glow, like the bag stickers */
 .varieties-section { padding: clamp(6rem, 11vw, 10rem) 0 clamp(5rem, 8vw, 8rem); background: var(--brown-deep); }
 .varieties-intro { display: grid; grid-template-columns: 1fr .45fr; gap: 2rem 4rem; align-items: end; }
@@ -276,7 +293,9 @@ p { text-wrap: pretty; }
   .hero-content { padding-bottom: 6rem; }
   .hero-bottom { bottom: 1.5rem; font-size: .7rem; }
   .scroll-cue { display: none; }
-  .product-grid, .terroir-grid, .proof-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .product-grid, .terroir-grid, .proof-grid, .graycano-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .graycano-features li { grid-template-columns: 1fr; gap: .25rem; }
+  .graycano-visual { position: static; aspect-ratio: 1200 / 746; }
   .different-intro, .varieties-intro { grid-template-columns: 1fr; gap: 1.5rem; }
   .feature-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 1rem; }
   .feature-card-large { grid-column: 1 / -1; }
@@ -301,5 +320,5 @@ p { text-wrap: pretty; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
   [data-reveal], [data-split] .char { opacity: 1; transform: none; }
-  .product-visual img, .image-band > img { transform: none !important; }
+  .product-visual img, .graycano-visual img, .image-band > img { transform: none !important; }
 }
