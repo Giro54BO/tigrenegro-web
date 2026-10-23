@@ -115,9 +115,11 @@
       const eased = easeInOut(progress);
       const from = heroLogo.getBoundingClientRect();
       const to = headerBrand.getBoundingClientRect();
+      // Draw at the large hero size and only scale down, so the wordmark stays sharp
+      const baseWidth = Math.max(from.width, to.width);
       const width = lerp(from.width, to.width, eased);
-      flight.style.width = `${to.width}px`;
-      flight.style.transform = `translate3d(${lerp(from.left, to.left, eased)}px, ${lerp(from.top, to.top, eased)}px, 0) scale(${width / to.width})`;
+      flight.style.width = `${baseWidth}px`;
+      flight.style.transform = `translate3d(${lerp(from.left, to.left, eased)}px, ${lerp(from.top, to.top, eased)}px, 0) scale(${width / baseWidth})`;
       const docked = progress >= 1;
       flight.style.opacity = docked ? '0' : '1';
       header.classList.toggle('logo-docked', docked);

@@ -95,7 +95,7 @@ p { text-wrap: pretty; }
 .menu-open .site-header { color: var(--cream); background: var(--brown); -webkit-backdrop-filter: none; backdrop-filter: none; }
 
 /* Flight logo: fixed copy of the wordmark that travels from the hero to the header */
-.flight-logo { position: fixed; z-index: 31; top: 0; left: 0; width: 100px; color: var(--cream); transform-origin: 0 0; pointer-events: none; display: none; will-change: transform; }
+.flight-logo { position: fixed; z-index: 31; top: 0; left: 0; width: 100px; color: var(--cream); transform-origin: 0 0; pointer-events: none; display: none; }
 .js-flight .flight-logo { display: block; }
 .js-flight .hero-logo { visibility: hidden; }
 
