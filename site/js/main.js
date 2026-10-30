@@ -5,6 +5,7 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.documentElement;
+  root.classList.add('js');
   const header = document.querySelector('[data-header]');
   const hero = document.querySelector('.hero');
   const heroLogo = document.querySelector('[data-hero-logo]');
@@ -89,6 +90,86 @@
   }, { threshold: .6 });
   document.querySelectorAll('[data-count]').forEach((counter) => countObserver.observe(counter));
 
+  // Process scrollytelling: the step crossing the trigger line draws its illustration,
+  // scrubbed by scroll (outlines first, then the traced drawings fill in)
+  const scrolly = document.querySelector('[data-scrolly]');
+  const figures = scrolly ? [...scrolly.querySelectorAll('.process-figure')] : [];
+  const steps = scrolly ? [...scrolly.querySelectorAll('.process-step')] : [];
+  const stepCurrent = scrolly?.querySelector('[data-step-current]');
+  const stepBar = scrolly?.querySelector('[data-step-bar]');
+  const isNarrow = window.matchMedia('(max-width: 860px)');
+  let activeStep = -1;
+
+  const setDraw = (figure, progress) => {
+    if (!figure.shapes || figure.progress === progress) return;
+    figure.progress = progress;
+    const draw = figure.traced ? clamp(progress / .75) : progress;
+    const fill = clamp((progress - .55) / .45);
+    figure.shapes.forEach(({ el, length }) => {
+      el.style.strokeDashoffset = `${length * (1 - draw)}`;
+      if (figure.traced) el.style.fillOpacity = `${fill}`;
+    });
+  };
+
+  const prepareFigure = (figure) => {
+    const svg = figure.querySelector('svg');
+    if (!svg) return;
+    figure.traced = svg.dataset.style === 'traced';
+    figure.shapes = [...svg.querySelectorAll('path, ellipse, rect, circle, line, polyline')].map((el) => {
+      const length = el.getTotalLength();
+      el.style.strokeDasharray = `${length}`;
+      return { el, length };
+    });
+    figure.progress = null;
+    setDraw(figure, 0);
+    requestUpdate();
+  };
+
+  const loadFigures = () => {
+    figures.forEach((figure) => {
+      fetch(figure.dataset.src)
+        .then((response) => (response.ok ? response.text() : Promise.reject(response.status)))
+        .then((markup) => { figure.innerHTML = markup; prepareFigure(figure); })
+        // Without fetch (e.g. opened from disk) show the drawing as a still image
+        .catch(() => { figure.innerHTML = `<img src="${figure.dataset.src}" alt="" />`; });
+    });
+  };
+
+  if (scrolly) {
+    const loadObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      loadObserver.disconnect();
+      loadFigures();
+    }, { rootMargin: '100% 0px' });
+    loadObserver.observe(scrolly);
+  }
+
+  const updateScrolly = (viewport) => {
+    const box = scrolly.getBoundingClientRect();
+    if (box.bottom < -viewport || box.top > viewport * 2) return;
+    // Follow each step's heading: drawing starts as it enters the lower screen and
+    // finishes before it reaches the middle (higher on phones, where the stage sits on top)
+    const start = viewport * .88;
+    const end = viewport * (isNarrow.matches ? .62 : .45);
+    const headingTop = (index) => steps[index].querySelector('h3').getBoundingClientRect().top;
+    let active = 0;
+    steps.forEach((step, index) => { if (headingTop(index) < start) active = index; });
+    const progress = reduceMotion ? 1 : clamp((start - headingTop(active)) / (start - end));
+
+    figures.forEach((figure, index) => {
+      if (index < active) setDraw(figure, 1);
+      else if (index > active) setDraw(figure, 0);
+      else setDraw(figure, progress);
+    });
+    if (active !== activeStep) {
+      activeStep = active;
+      figures.forEach((figure, index) => figure.classList.toggle('is-current', index === active));
+      steps.forEach((step, index) => step.classList.toggle('is-active', index === active));
+      stepCurrent.textContent = String(active + 1).padStart(2, '0');
+    }
+    stepBar.style.transform = `scaleX(${(active + progress) / steps.length})`;
+  };
+
   // Scroll-driven effects, all in one animation frame
   const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
   const scaleItems = [...document.querySelectorAll('[data-scale]')];
@@ -124,6 +205,8 @@
       flight.style.opacity = docked ? '0' : '1';
       header.classList.toggle('logo-docked', docked);
     }
+
+    if (scrolly) updateScrolly(viewport);
 
     if (!reduceMotion) {
       parallaxItems.forEach((item) => {

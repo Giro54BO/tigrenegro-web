@@ -15,6 +15,24 @@ Revisión visual del 23 de octubre de 2026. Las rutas son relativas a `Assets/im
 | `Product/Gemini_Generated_Image_9p36869p36869p36.jpeg` | Bolsa abierta con granos | `bolsa-granos.webp` (sección «El producto») |
 | `video/Yanapuma-Hero-3-web.mp4` | Video del hero | `media/video/hero.mp4` (recodificado) + `hero-poster.webp` |
 
+## Ilustraciones del proceso
+
+Dibujos de línea en `Proceso/`, vectorizados para la sección «De la tierra a la taza» (`site/media/proceso/`). Se dibujan solos al hacer scroll.
+
+| Original | Paso | En el sitio |
+|---|---|---|
+| `Proceso/01-germinador.jpg` | 1. Germinador | `01-germinador.svg` |
+| `Proceso/02-vivero.jpg` | 2. Vivero | `02-vivero.svg` |
+| `Proceso/03-cafetal.jpg` | 3. Cafetal | `03-cafetal.svg` |
+| `Proceso/04-beneficio-humedo.jpg` | 4. Beneficio húmedo (desmucilaginador) | `04-beneficio-humedo.svg` |
+| `Proceso/05-secado.jpg` | 5. Secado | `05-secado.svg` |
+| `Proceso/06-trillado.jpg` | 6. Trillado | `06-trillado.svg` |
+| `Proceso/07-tostado-hd.jpg` | 7. Tostado (versión en alta resolución; reemplaza a `07-tostado.jpg`) | `07-tostado.svg` |
+| `Proceso/08-molido.jpg` | 8. Molido | `08-molido.svg` |
+| — | 9. Filtrado | `09-filtrado.svg` (dibujado a mano en SVG; no había ilustración) |
+
+Los pasos 1 a 6 y 8 se vectorizaron desde `Proceso/ilustraciones-hoja-limpia.jpg`, una hoja con trazos más limpios. En el tostado se borró la marca «ROABES», que no es real.
+
 ## Disponibles, por tema
 
 - **Paisaje y reserva (dron):** `DJI_…0006`, `…0008`, `…0012`, `…0013`, `…0014`, `…0023`, `…0026`, `…0028`. `…0012` y `…0013` son tomas cenitales con la beneficiadora; `…0054` muestra el techo azul de una estructura en el bosque.

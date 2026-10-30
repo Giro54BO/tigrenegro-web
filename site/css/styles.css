@@ -163,19 +163,37 @@ p { text-wrap: pretty; }
 .feature-card h3 { margin: 0; font-weight: 700; font-size: clamp(2rem, 3.4vw, 3.6rem); line-height: 1; letter-spacing: -.02em; }
 .feature-card p { max-width: 22rem; margin: 1rem 0 0; color: var(--sand); font-size: .95rem; }
 
-/* Terroir + process accordion */
-.terroir-section { padding: clamp(6rem, 11vw, 10rem) 0; }
-.terroir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 7vw, 8rem); align-items: start; }
-.terroir-heading .lead { margin: 2rem 0 1rem; }
-.terroir-heading > p:last-child { color: var(--taupe); }
-.process-list { border-top: 1px solid var(--line); }
-.process-list details { border-bottom: 1px solid var(--line); }
-.process-list summary { display: flex; align-items: baseline; gap: 1.25rem; padding: 1.4rem 0; font: 700 clamp(1.4rem, 2.2vw, 1.9rem)/1.15 var(--display); letter-spacing: -.01em; list-style: none; cursor: pointer; }
-.process-list summary::-webkit-details-marker { display: none; }
-.process-list summary span { color: var(--tan); font: .78rem var(--label); letter-spacing: .14em; }
-.process-list summary::after { margin-left: auto; font: 400 1.4rem var(--body); content: "+"; transition: transform .35s var(--ease-out); }
-.process-list details[open] summary::after { transform: rotate(45deg); }
-.process-list details p { max-width: 32rem; margin: -.4rem 0 1.5rem 2.6rem; color: var(--taupe); }
+/* Terroir + process scrollytelling */
+.terroir-section { padding: clamp(6rem, 11vw, 10rem) 0 clamp(4rem, 8vw, 7rem); }
+.terroir-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem clamp(3rem, 7vw, 8rem); align-items: end; }
+.terroir-intro .lead { margin: 0 0 1rem; }
+.terroir-intro p:not(.lead):not(.eyebrow) { margin: 0; color: var(--taupe); }
+.process-scrolly { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 6vw, 7rem); margin-top: clamp(3rem, 7vw, 6rem); }
+.process-stage { position: sticky; top: calc(var(--header-h) + 1rem); display: flex; flex-direction: column; gap: 1.25rem; height: calc(100svh - var(--header-h) - 2.5rem); max-height: 46rem; }
+.process-frame { position: relative; flex: 1; border-radius: 1rem; background: var(--offwhite); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
+.process-figure { position: absolute; inset: 9%; display: grid; place-items: center; color: var(--brown); opacity: 0; transition: opacity .5s ease; }
+.process-figure.is-current { opacity: 1; }
+.process-figure svg, .process-figure img { width: 100%; height: 100%; }
+/* Traced drawings: outlines draw first, then the solid lines fill in */
+.process-figure [data-style="traced"] path { stroke-width: 20; fill-opacity: 0; }
+.process-meta { display: flex; align-items: center; gap: 1.25rem; font: .78rem var(--label); letter-spacing: .16em; color: var(--tan); }
+.process-count b { color: var(--brown); font-weight: 400; }
+.process-bar { position: relative; flex: 1; height: 1px; background: var(--line); }
+.process-bar i { position: absolute; inset: 0 auto 0 0; width: 100%; background: var(--brown); transform: scaleX(0); transform-origin: left; }
+.process-steps { margin: 0; padding: 0; list-style: none; }
+.process-step { display: flex; flex-direction: column; justify-content: center; min-height: 72svh; max-width: 30rem; transition: opacity .5s ease; }
+.js .process-step { opacity: .28; }
+.process-step:first-child { min-height: 60svh; }
+.process-step:last-child { min-height: 80svh; }
+.js .process-step.is-active { opacity: 1; }
+.process-num { color: var(--tan); font: .78rem var(--label); letter-spacing: .16em; }
+.process-step h3 { margin: .75rem 0 1rem; font-weight: 700; font-size: clamp(2rem, 3.4vw, 3.4rem); line-height: 1; letter-spacing: -.02em; }
+.process-step p { margin: 0; color: var(--taupe); font-size: 1.05rem; }
+.process-step .inline-link { display: inline-block; margin-top: .75rem; color: var(--brown); }
+/* Without JavaScript the steps read as a plain list */
+html:not(.js) .process-stage { display: none; }
+html:not(.js) .process-scrolly { grid-template-columns: 1fr; }
+html:not(.js) .process-step { min-height: 0; padding: 1.5rem 0; }
 
 .inline-link { border-bottom: 1px solid currentColor; }
 
@@ -293,7 +311,11 @@ p { text-wrap: pretty; }
   .hero-content { padding-bottom: 6rem; }
   .hero-bottom { bottom: 1.5rem; font-size: .7rem; }
   .scroll-cue { display: none; }
-  .product-grid, .terroir-grid, .proof-grid, .graycano-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .product-grid, .terroir-intro, .proof-grid, .graycano-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .process-scrolly { grid-template-columns: 1fr; gap: 0; }
+  .process-stage { z-index: 2; top: var(--header-h); height: 46svh; max-height: none; padding: .75rem 0 1rem; background: #efe8de; }
+  .process-step, .process-step:first-child { min-height: 62svh; padding-top: 4rem; justify-content: flex-start; }
+  .process-step:last-child { min-height: 50svh; }
   .graycano-features li { grid-template-columns: 1fr; gap: .25rem; }
   .graycano-visual { position: static; aspect-ratio: 1200 / 746; }
   .different-intro, .varieties-intro { grid-template-columns: 1fr; gap: 1.5rem; }

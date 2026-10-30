@@ -140,34 +140,84 @@
       </section>
 
       <section class="terroir-section section-cream" id="terroir" aria-labelledby="terroir-title">
-        <div class="container terroir-grid">
-          <div class="terroir-heading">
-            <p class="eyebrow" data-reveal>Terroir y proceso</p>
-            <h2 id="terroir-title" class="display-heading" data-split>De la tierra a la taza.</h2>
-            <p class="lead" data-reveal>Cultivamos al borde del bosque, entre 1.200 y 1.750 msnm, donde la humedad del Amboró y la tierra negra hacen posible una calidad singular.</p>
-            <p data-reveal>Tenemos la infraestructura, la experiencia y el conocimiento para llevar el café hasta su consumo final.</p>
+        <div class="container">
+          <div class="terroir-intro">
+            <div>
+              <p class="eyebrow" data-reveal>Terroir y proceso</p>
+              <h2 id="terroir-title" class="display-heading" data-split>De la tierra a la taza.</h2>
+            </div>
+            <div>
+              <p class="lead" data-reveal>Cultivamos al borde del bosque, entre 1.200 y 1.750 msnm, donde la humedad del Amboró y la tierra negra hacen posible una calidad singular.</p>
+              <p data-reveal>Sembramos bajo sombra, en antiguos chacos que hoy reforestamos, sin tocar el bosque. Y tenemos la infraestructura y el conocimiento para llevar el café hasta su consumo final.</p>
+            </div>
           </div>
-          <div class="process-list" data-reveal>
-            <details open>
-              <summary><span>01</span>Cultivo bajo sombra</summary>
-              <p>Sistema agroforestal en antiguos chacos que hoy reforestamos. Sembramos aprovechando un camino existente, sin tocar el bosque.</p>
-            </details>
-            <details>
-              <summary><span>02</span>Cosecha manual</summary>
-              <p>Solo cerezas maduras, recolectadas a mano, lote por lote.</p>
-            </details>
-            <details>
-              <summary><span>03</span>Beneficio</summary>
-              <p>Beneficiadora con equipos Palini Alves de última generación, junto a un galpón artesanal con laboratorio.</p>
-            </details>
-            <details>
-              <summary><span>04</span>Secado</summary>
-              <p>Proceso natural en un secador tipo invernadero, a su propio ritmo.</p>
-            </details>
-            <details>
-              <summary><span>05</span>Catación y filtrado</summary>
-              <p>Cada lote se evalúa en nuestro laboratorio. Para prepararlo, recomendamos el método de filtrado <a class="inline-link" href="#graycano">Graycano</a>.</p>
-            </details>
+
+          <!-- Scrollytelling: each step that scrolls into view draws its illustration (js/main.js) -->
+          <div class="process-scrolly" data-scrolly>
+            <div class="process-stage" aria-hidden="true">
+              <div class="process-frame">
+              <div class="process-figure" data-src="media/proceso/01-germinador.svg"></div>
+              <div class="process-figure" data-src="media/proceso/02-vivero.svg"></div>
+              <div class="process-figure" data-src="media/proceso/03-cafetal.svg"></div>
+              <div class="process-figure" data-src="media/proceso/04-beneficio-humedo.svg"></div>
+              <div class="process-figure" data-src="media/proceso/05-secado.svg"></div>
+              <div class="process-figure" data-src="media/proceso/06-trillado.svg"></div>
+              <div class="process-figure" data-src="media/proceso/07-tostado.svg"></div>
+              <div class="process-figure" data-src="media/proceso/08-molido.svg"></div>
+              <div class="process-figure" data-src="media/proceso/09-filtrado.svg"></div>
+              </div>
+              <div class="process-meta">
+                <span class="process-count"><b data-step-current>01</b> / 09</span>
+                <span class="process-bar"><i data-step-bar></i></span>
+              </div>
+            </div>
+            <ol class="process-steps">
+            <li class="process-step">
+              <span class="process-num">01</span>
+              <h3>Germinador</h3>
+              <p>Las semillas seleccionadas se siembran en almácigos o camas de arena hasta que brotan en pequeños tallos, llamados «fósforos».</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">02</span>
+              <h3>Vivero</h3>
+              <p>Las plántulas se trasplantan a bolsas individuales y crecen bajo sombra hasta tener la fuerza para ir al campo.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">03</span>
+              <h3>Cafetal</h3>
+              <p>Los plantines más robustos se siembran en su lugar definitivo, donde el cafeto crece, florece y da cerezas maduras año tras año.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">04</span>
+              <h3>Beneficio húmedo</h3>
+              <p>En la beneficiadora, con equipos Palini Alves, se despulpan las cerezas para retirar la cáscara y se remueve el mucílago, la capa pegajosa que envuelve el grano.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">05</span>
+              <h3>Secado</h3>
+              <p>El café en pergamino se extiende al sol o en nuestro secador tipo invernadero hasta bajar su humedad a un nivel estable, cercano al 10–12 %.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">06</span>
+              <h3>Trillado</h3>
+              <p>Se retira la cáscara de pergamino del grano seco para obtener el café verde, o «café oro», listo para la selección.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">07</span>
+              <h3>Tostado</h3>
+              <p>El grano verde se somete a altas temperaturas que transforman su química y liberan su aroma, su cuerpo y su perfil de sabor.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">08</span>
+              <h3>Molido</h3>
+              <p>El café tostado se muele al grosor exacto para cada método de preparación: fino, medio o grueso.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-num">09</span>
+              <h3>Filtrado</h3>
+              <p>El agua caliente atraviesa el café molido y extrae sus aceites, aromas y sabores. Así nace la taza. <a class="inline-link" href="#graycano">Lo hacemos con Graycano ↘</a></p>
+            </li>
+            </ol>
           </div>
         </div>
       </section>

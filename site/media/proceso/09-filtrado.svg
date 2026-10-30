@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400" data-style="stroke" aria-hidden="true" focusable="false">
+<g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<!-- Gooseneck kettle spout and water stream -->
+<path d="M8 30 C 52 26, 84 44, 104 70 L 122 84"/>
+<path d="M8 44 C 48 42, 74 58, 94 80 L 116 94"/>
+<path d="M122 84 L 128 88 L 116 94"/>
+<path d="M127 92 C 140 100, 160 104, 176 112"/>
+<!-- Filter paper above the dripper -->
+<path d="M106 118 L 114 106 L 124 116 L 134 104 L 146 114 L 158 102 L 170 112 L 182 100 L 194 112 L 206 102 L 218 114 L 230 104 L 240 116 L 248 106 L 254 118"/>
+<!-- Dripper: rim, cone and base -->
+<ellipse cx="180" cy="122" rx="80" ry="13"/>
+<path d="M100 122 L 150 214"/>
+<path d="M260 122 L 210 214"/>
+<path d="M150 214 Q 180 222 210 214"/>
+<path d="M150 214 L 150 226"/>
+<path d="M210 214 L 210 226"/>
+<ellipse cx="180" cy="230" rx="60" ry="9"/>
+<!-- Cork sleeve with its tag and texture -->
+<path d="M108 137 Q 180 156 252 137"/>
+<path d="M135 186 Q 180 199 225 186"/>
+<path d="M150 152 L 168 155 L 167 167 L 149 164 Z"/>
+<path d="M126 150 l 2 1 M140 170 l 2 1 M178 160 l 2 0 M192 172 l 2 1 M206 158 l 2 0 M222 168 l 2 -1 M234 150 l 2 0 M160 176 l 2 1 M198 146 l 2 0 M120 160 l 1 2 M214 178 l 2 0 M184 182 l 2 1"/>
+<!-- Drops -->
+<path d="M180 240 C 177 245, 177 249, 180 250 C 183 249, 183 245, 180 240 Z"/>
+<path d="M180 258 C 178 262, 178 265, 180 266 C 182 265, 182 262, 180 258 Z"/>
+<!-- Glass server with handle -->
+<path d="M120 236 C 106 262, 98 300, 112 340 C 118 356, 132 364, 180 364 C 228 364, 242 356, 248 340 C 262 300, 254 262, 240 236"/>
+<path d="M248 254 C 296 250, 304 330, 254 336"/>
+<path d="M250 266 C 284 266, 288 320, 256 322"/>
+<path d="M114 262 C 108 284, 108 304, 114 322"/>
+<path d="M124 270 C 120 286, 120 300, 124 312"/>
+<!-- Coffee inside the server -->
+<path d="M104 312 C 140 322, 220 322, 256 312"/>
+<path d="M126 326 L 120 346 M140 330 L 134 354 M156 332 L 150 358 M172 333 L 166 360 M188 333 L 182 360 M204 332 L 198 358 M220 330 L 214 354 M236 326 L 230 346"/>
+<!-- Scale -->
+<path d="M84 370 H 276 Q 284 370 284 378 V 384 Q 284 392 276 392 H 84 Q 76 392 76 384 V 378 Q 76 370 84 370 Z"/>
+<path d="M164 376 H 196 V 386 H 164 Z"/>
+<!-- Ribbed glass on the left -->
+<path d="M22 300 L 28 366 Q 44 372 60 366 L 66 300"/>
+<ellipse cx="44" cy="300" rx="22" ry="5"/>
+<path d="M30 306 L 34 362 M38 307 L 40 364 M46 307 L 46 364 M54 306 L 52 363 M61 305 L 58 361"/>
+<path d="M26 340 Q 44 346 62 340"/>
+<!-- Table line -->
+<path d="M4 394 H 356"/>
+</g>
+</svg>
