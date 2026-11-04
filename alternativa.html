@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#efe8de" />
+    <meta name="theme-color" content="#382f2d" />
     <meta name="description" content="TigreNegro Specialty Coffee. Un café con propósito de altísima calidad, cultivado en la reserva Yanapuma, junto al Parque Nacional Amboró." />
     <title>TigreNegro · Specialty Coffee</title>
     <link rel="icon" href="media/logo/dot.svg" type="image/svg+xml" />
@@ -17,213 +17,396 @@
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <!-- Header: centered wordmark, a single pill on the right -->
+    <!-- Header: nav left, centered wordmark, one pill right. Cream over the video, solid once the curtain covers it -->
     <header class="site-header" data-header>
       <div class="header-inner">
-        <p class="header-place">Volcanes · Amboró · Bolivia</p>
+        <nav class="header-nav" aria-label="Navegación principal">
+          <a href="#diferencia">La diferencia</a>
+          <a href="#terroir">Terroir y proceso</a>
+          <a href="#variedades">Variedades</a>
+        </nav>
         <a class="header-brand" href="#inicio" aria-label="TigreNegro, ir al inicio">
           <img class="brand-dot" src="media/logo/dot.svg" alt="" />
           <span class="logo-mask"></span>
         </a>
-        <a class="pill pill-dark header-cta" data-whatsapp href="#">Pedir <span class="hide-sm">por WhatsApp</span></a>
+        <a class="pill header-cta" data-whatsapp href="#">Pedir <span class="hide-sm">por WhatsApp</span> <span aria-hidden="true">↗</span></a>
       </div>
     </header>
 
     <main id="contenido">
-      <!-- Hero: static headline over three tall frames, one per pillar. No intro animation. -->
-      <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="container">
-          <p class="kicker">Specialty coffee de la reserva Yanapuma</p>
-          <h1 id="hero-title" class="hero-title">Un café con propósito,<br /><em>de altísima calidad.</em></h1>
+      <!-- Sticky hero reveal: the video stays pinned while the page slides over it like a curtain (js/alternativa.js) -->
+      <section class="hero" id="inicio" aria-label="TigreNegro Specialty Coffee" data-hero>
+        <div class="hero-media" data-hero-media>
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/img/hero-poster.webp" data-hero-video>
+            <source src="media/video/hero.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-scrim"></div>
         </div>
-        <ul class="pillars container">
-          <li class="pillar">
-            <a href="#variedades">
-              <figure><img src="media/img/cerezas.webp" alt="Rama de cafeto con cerezas maduras" width="1400" height="933" /></figure>
-              <h2>Variedades exóticas</h2>
-              <p>Un banco genético único en Bolivia</p>
-            </a>
-          </li>
-          <li class="pillar">
-            <a href="#producto">
-              <figure><img src="media/img/terroir-dron.webp" alt="Vista aérea de la serranía junto al Parque Nacional Amboró" width="1600" height="1201" /></figure>
-              <h2>Terroir único</h2>
-              <p>Tierra negra y la humedad del Amboró</p>
-            </a>
-          </li>
-          <li class="pillar">
-            <a href="#producto">
-              <figure><img src="media/img/secado.webp" alt="Camas de secado de café en la beneficiadora" width="1400" height="933" /></figure>
-              <h2>Beneficio propio</h2>
-              <p>Del cafetal a la taza, sin intermediarios</p>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Product: big statement, then a sticky image beside a gallery and accordions -->
-      <section class="product" id="producto" aria-labelledby="product-title">
-        <div class="container">
-          <h2 id="product-title" class="statement" data-reveal>La montaña, <em>en una bolsa.</em></h2>
-        </div>
-        <div class="container product-grid">
-          <div class="product-side">
-            <p class="product-lead" data-reveal>Variedades exóticas cultivadas bajo sombra, cosechadas a mano y llevadas hasta su mejor expresión en taza. Bolsas de 200 g, en grano o molido.</p>
-
-            <div class="thumbs" role="group" aria-label="Galería del producto" data-reveal>
-              <button class="thumb is-active" type="button" aria-pressed="true" data-src="media/img/bolsa.webp" data-alt="Bolsa de café TigreNegro de 200 g" data-pos="16% 50%" data-blend>
-                <img src="media/img/bolsa.webp" alt="" style="object-position: 22% 50%" />
-                <span class="sr-only">Ver la bolsa cerrada</span>
-              </button>
-              <button class="thumb" type="button" aria-pressed="false" data-src="media/img/bolsa-granos.webp" data-alt="Bolsa de café TigreNegro abierta, con granos tostados derramándose" data-pos="55% 50%" data-blend>
-                <img src="media/img/bolsa-granos.webp" alt="" />
-                <span class="sr-only">Ver la bolsa abierta con granos</span>
-              </button>
-              <button class="thumb" type="button" aria-pressed="false" data-src="media/img/graycano.avif" data-alt="Gotero Graycano con funda de corcho sobre una jarra de vidrio con café recién filtrado" data-pos="68% 50%">
-                <img src="media/img/graycano.avif" alt="" />
-                <span class="sr-only">Ver el gotero Graycano</span>
-              </button>
-              <button class="thumb" type="button" aria-pressed="false" data-src="media/img/cultivo-sombra.webp" data-alt="Cafetales bajo sombra en la reserva Yanapuma" data-pos="50% 50%">
-                <img src="media/img/cultivo-sombra.webp" alt="" />
-                <span class="sr-only">Ver el cafetal bajo sombra</span>
-              </button>
-            </div>
-
-            <a class="pill pill-outline pill-block" href="#variedades" data-reveal>Explorar variedades</a>
-
-            <div class="accordion" data-reveal>
-              <details>
-                <summary>Ficha del producto<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <dl class="specs">
-                    <div><dt>Presentación</dt><dd>Bolsa de 200 g, en grano o molido</dd></div>
-                    <div><dt>Proceso</dt><dd>Natural</dd></div>
-                    <div><dt>Altura</dt><dd>1.200–1.750 msnm</dd></div>
-                    <div><dt>Cosecha</dt><dd>Manual, cereza por cereza</dd></div>
-                    <div><dt>Origen</dt><dd>Reserva Yanapuma, Volcanes, Santa Cruz, Bolivia</dd></div>
-                  </dl>
-                </div>
-              </details>
-              <details>
-                <summary>Terroir<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <p>Cultivamos al borde del bosque, entre 1.200 y 1.750 msnm, donde la humedad del Amboró y la tierra negra, rica en materia orgánica, hacen posible una calidad singular.</p>
-                  <p>Sembramos bajo sombra, en antiguos chacos que hoy reforestamos, sin tocar el bosque.</p>
-                </div>
-              </details>
-              <details>
-                <summary>El proceso, paso a paso<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <ol class="steps">
-                    <li><b>Germinador.</b> Las semillas brotan en camas de arena hasta formar los «fósforos».</li>
-                    <li><b>Vivero.</b> Las plántulas crecen en bolsas individuales, bajo sombra.</li>
-                    <li><b>Cafetal.</b> Los plantines más robustos van a su lugar definitivo.</li>
-                    <li><b>Beneficio húmedo.</b> Con equipos Palini Alves se despulpa y se retira el mucílago.</li>
-                    <li><b>Secado.</b> Al sol o en secador tipo invernadero, hasta un <span class="nowrap">10–12 %</span> de humedad.</li>
-                    <li><b>Trillado.</b> Se retira el pergamino para obtener el café verde, o «café oro».</li>
-                    <li><b>Tostado.</b> El calor libera el aroma, el cuerpo y el perfil de sabor.</li>
-                    <li><b>Molido.</b> Al grosor exacto para cada método: fino, medio o grueso.</li>
-                    <li><b>Filtrado.</b> El agua extrae aceites, aromas y sabores. Así nace la taza.</li>
-                  </ol>
-                </div>
-              </details>
-              <details>
-                <summary>Graycano, método de filtrado<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <p>Somos representantes de Graycano, la marca alemana de equipos para café de especialidad creada en Leipzig. Su gotero, con núcleo de aluminio fundido, Lava Ribs y funda de corcho hecha a mano en Portugal, es la forma en que recomendamos preparar TigreNegro.</p>
-                  <p><a class="inline-link" data-whatsapp data-message="Hola, quiero información sobre los productos Graycano." href="#">Consultar por Graycano</a> · <a class="inline-link" href="https://graycano.com/" target="_blank" rel="noopener">graycano.com</a></p>
-                </div>
-              </details>
-              <details>
-                <summary>Café con propósito<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <p>Cultivamos como máximo el 1% del territorio que protegemos: 11 hectáreas y un 99% de bosque conservado. Con tan poco espacio, la única forma de crecer es mejorar la calidad.</p>
-                  <p>Bajo la dirección de Lean Coffee Management, quienes han trabajado con fincas ganadoras de Taza de Excelencia en El Salvador y Guatemala.</p>
-                  <p><a class="inline-link" href="https://giro54bo.github.io/yanapuma-web/" target="_blank" rel="noopener">Conoce Yanapuma</a> · <a class="inline-link" href="https://giro54bo.github.io/yanapuma-web/#contacto" target="_blank" rel="noopener">Planifica tu visita</a></p>
-                </div>
-              </details>
-              <details>
-                <summary>Pedidos y mayoristas<i aria-hidden="true"></i></summary>
-                <div class="accordion-body">
-                  <p>Elige tu variedad y cómo la prefieres: nuestro equipo de ventas te atiende por WhatsApp.</p>
-                  <p>¿Tienes una cafetería o buscas café verde? Ofrecemos bolsas de 5 kg y lotes en verde. <a class="inline-link" data-whatsapp data-message="Hola, tengo una cafetería y quiero información sobre bolsas de 5 kg o café verde TigreNegro." href="#">Escríbenos</a></p>
-                </div>
-              </details>
-            </div>
+        <div class="hero-content container" data-hero-content>
+          <p class="eyebrow">Volcanes · Amboró · Bolivia</p>
+          <h1 class="hero-logo">
+            <img class="brand-dot" src="media/logo/dot.svg" alt="" />
+            <span class="logo-mask"></span>
+            <span class="sr-only">TigreNegro Specialty Coffee</span>
+          </h1>
+          <p class="hero-tagline">Intensidad que no necesita anunciarse.</p>
+          <div class="hero-actions">
+            <a class="pill pill-cream" href="#variedades">Ver variedades <span aria-hidden="true">↘</span></a>
+            <a class="text-link" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
           </div>
-
-          <figure class="product-stage">
-            <img src="media/img/bolsa.webp" alt="Bolsa de café TigreNegro de 200 g" style="object-position: 16% 50%" class="is-blend" data-stage />
-          </figure>
+        </div>
+        <div class="hero-bottom container" aria-hidden="true" data-hero-content>
+          <span>1% cultivado</span><span class="hero-line"></span><span>99% conservado</span>
+          <span class="scroll-cue">Desliza <b>↓</b></span>
         </div>
       </section>
 
-      <!-- Varieties: italic intro on the left, a strip of tall cards that open on tap -->
-      <section class="varieties" id="variedades" aria-labelledby="varieties-title">
-        <div class="varieties-grid">
-          <div class="varieties-intro container-left" data-reveal>
-            <h2 id="varieties-title">Cada variedad se cultiva bajo sombra, se cosecha a mano y se procesa con intención. Tu próxima taza favorita te espera.</h2>
-            <p>Toca una variedad para explorar</p>
+      <!-- Everything below is the curtain -->
+      <div class="curtain">
+        <!-- Statement: the brand line over a framed photo, then the varieties marquee -->
+        <section class="statement-band" aria-labelledby="statement-title">
+          <div class="container">
+            <div class="photo-band">
+              <img src="media/img/cultivo-sombra.webp" alt="Cafetales bajo sombra en la reserva Yanapuma" loading="lazy" />
+              <div class="photo-band-copy">
+                <h2 id="statement-title" class="display" data-reveal>Un café con propósito <em>de altísima calidad.</em></h2>
+                <p data-reveal>Nace para sostener la conservación de Yanapuma. Y por eso solo puede ser excepcional.</p>
+              </div>
+            </div>
           </div>
-          <ul class="variety-strip" data-strip>
-            <li class="variety" style="--glow: #ff7f82" data-variety="Gesha">
-              <button type="button" aria-expanded="false"><span class="variety-name">Gesha</span></button>
-              <div class="variety-detail"><span class="variety-tag">01 · Proceso natural</span><p>Dulce, natural y frutas tropicales</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
+        </section>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Gesha</span><i></i><span>Acaia</span><i></i><span>Catucai</span><i></i><span>Arara</span><i></i><span>Castillo</span><i></i><span>IPR 103</span><i></i><span>Tupi</span><i></i><span>1% cultivado</span><i></i><span>99% conservado</span><i></i>
+            <span>Gesha</span><i></i><span>Acaia</span><i></i><span>Catucai</span><i></i><span>Arara</span><i></i><span>Castillo</span><i></i><span>IPR 103</span><i></i><span>Tupi</span><i></i><span>1% cultivado</span><i></i><span>99% conservado</span><i></i>
+          </div>
+        </div>
+
+        <!-- The difference: headline over three tall frames -->
+        <section class="difference" id="diferencia" aria-labelledby="different-title">
+          <div class="container difference-intro">
+            <p class="eyebrow" data-reveal>La diferencia</p>
+            <h2 id="different-title" class="display" data-reveal>Lo extraordinario <em>se cultiva.</em></h2>
+            <p class="difference-sub" data-reveal>Entre la luz y la sombra, se mueve el jaguar. También el café que cultivamos.</p>
+          </div>
+          <ul class="pillars container">
+            <li class="pillar" data-reveal>
+              <a href="#variedades">
+                <figure><img src="media/img/cerezas.webp" alt="Rama de cafeto con cerezas maduras" width="1400" height="933" loading="lazy" /></figure>
+                <span class="pillar-index">01 / 03</span>
+                <h3>Variedades exóticas</h3>
+                <p>Un banco genético único en Bolivia, con variedades que hoy no se producen en el país.</p>
+              </a>
             </li>
-            <li class="variety" style="--glow: #638c69" data-variety="Acaia">
-              <button type="button" aria-expanded="false"><span class="variety-name">Acaia</span></button>
-              <div class="variety-detail"><span class="variety-tag">02 · Proceso natural</span><p>Kiwi, tumbo y piña</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
+            <li class="pillar" data-reveal>
+              <a href="#terroir">
+                <figure><img src="media/img/terroir-dron.webp" alt="Vista aérea de la serranía junto al Parque Nacional Amboró" width="1600" height="1201" loading="lazy" /></figure>
+                <span class="pillar-index">02 / 03</span>
+                <h3>Terroir único</h3>
+                <p>Tierra negra rica en materia orgánica, microclimas y la humedad del Amboró.</p>
+              </a>
             </li>
-            <li class="variety" style="--glow: #f2a400" data-variety="Catucai">
-              <button type="button" aria-expanded="false"><span class="variety-name">Catucai</span></button>
-              <div class="variety-detail"><span class="variety-tag">03 · Proceso natural</span><p>Dulce de leche, papaya y mango</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
-            </li>
-            <li class="variety" style="--glow: #98669c" data-variety="Arara">
-              <button type="button" aria-expanded="false"><span class="variety-name">Arara</span></button>
-              <div class="variety-detail"><span class="variety-tag">04 · Proceso natural</span><p>Dulce de leche, papaya y mango</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
-            </li>
-            <li class="variety" style="--glow: #ea7749" data-variety="Castillo">
-              <button type="button" aria-expanded="false"><span class="variety-name">Castillo</span></button>
-              <div class="variety-detail"><span class="variety-tag">05 · Proceso natural</span><p>Dulce, natural y frutas tropicales</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
-            </li>
-            <li class="variety" style="--glow: #6379c4" data-variety="IPR 103">
-              <button type="button" aria-expanded="false"><span class="variety-name">IPR 103</span></button>
-              <div class="variety-detail"><span class="variety-tag">06 · Proceso natural</span><p>Kiwi, tumbo y piña</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
-            </li>
-            <li class="variety" style="--glow: #72abae" data-variety="Tupi">
-              <button type="button" aria-expanded="false"><span class="variety-name">Tupi</span></button>
-              <div class="variety-detail"><span class="variety-tag">07 · Proceso natural</span><p>Jazmín, durazno y piña</p><a class="pill pill-cream" data-whatsapp href="#">Pedir</a></div>
-            </li>
-            <li class="variety variety-soon">
-              <div class="variety-soon-inner"><span class="variety-name">+20</span><p>Nuevas variedades exóticas llegan con la próxima cosecha.</p></div>
+            <li class="pillar" data-reveal>
+              <a href="#terroir">
+                <figure><img src="media/img/secado.webp" alt="Camas de secado de café en la beneficiadora" width="1400" height="933" loading="lazy" /></figure>
+                <span class="pillar-index">03 / 03</span>
+                <h3>Beneficio propio</h3>
+                <p>Equipos Palini Alves, galpón artesanal con laboratorio y secador tipo invernadero.</p>
+              </a>
             </li>
           </ul>
-        </div>
-      </section>
+        </section>
+
+        <!-- Product: big statement, then the gallery beside the product image -->
+        <section class="product" id="producto" aria-labelledby="product-title">
+          <div class="container product-head">
+            <p class="eyebrow" data-reveal>El producto</p>
+            <h2 id="product-title" class="statement" data-reveal>La montaña, <em>en una bolsa.</em></h2>
+          </div>
+          <div class="container product-grid">
+            <div class="product-side">
+              <p class="product-lead" data-reveal>Variedades exóticas cultivadas bajo sombra, cosechadas a mano y llevadas hasta su mejor expresión en taza.</p>
+              <p class="product-copy" data-reveal>Elige tu variedad y cómo la prefieres. Nuestro equipo de ventas te atiende por WhatsApp. Bolsas de 200 g, en grano o molido.</p>
+
+              <div class="thumbs" role="group" aria-label="Galería" data-reveal>
+                <button class="thumb is-active" type="button" aria-pressed="true" data-src="media/img/bolsa.webp" data-alt="Bolsa de café TigreNegro" data-pos="16% 50%" data-blend data-chips>
+                  <img src="media/img/bolsa.webp" alt="" style="object-position: 22% 50%" />
+                  <span class="sr-only">Bolsa de café TigreNegro</span>
+                </button>
+                <button class="thumb" type="button" aria-pressed="false" data-src="media/img/bolsa-granos.webp" data-alt="Bolsa de café TigreNegro abierta, con granos tostados derramándose" data-pos="55% 50%" data-blend data-chips>
+                  <img src="media/img/bolsa-granos.webp" alt="" />
+                  <span class="sr-only">Bolsa de café TigreNegro abierta, con granos tostados derramándose</span>
+                </button>
+                <button class="thumb" type="button" aria-pressed="false" data-src="media/img/graycano.avif" data-alt="Gotero Graycano con funda de corcho sobre una jarra de vidrio con café recién filtrado" data-pos="68% 50%">
+                  <img src="media/img/graycano.avif" alt="" />
+                  <span class="sr-only">Gotero Graycano con funda de corcho sobre una jarra de vidrio con café recién filtrado</span>
+                </button>
+                <button class="thumb" type="button" aria-pressed="false" data-src="media/img/cultivo-sombra.webp" data-alt="Cafetales bajo sombra en la reserva Yanapuma" data-pos="50% 50%">
+                  <img src="media/img/cultivo-sombra.webp" alt="" />
+                  <span class="sr-only">Cafetales bajo sombra en la reserva Yanapuma</span>
+                </button>
+              </div>
+
+              <a class="pill pill-outline pill-block" href="#variedades" data-reveal>Explorar variedades <span aria-hidden="true">↘</span></a>
+
+            </div>
+
+            <figure class="product-stage" data-stage-frame>
+              <img src="media/img/bolsa.webp" alt="Bolsa de café TigreNegro" style="object-position: 16% 50%" class="is-blend" data-stage />
+              <div class="chips" aria-hidden="true">
+                <div class="info-chip chip-top"><strong>Gesha</strong><span>Proceso natural</span></div>
+                <div class="info-chip chip-side"><strong>1.200–1.750</strong><span>msnm</span></div>
+                <div class="info-chip chip-bottom"><strong>200 g</strong><span>Cosecha manual</span></div>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <!-- Terroir y proceso: intro, then the pinned timeline where vertical scroll slides the 9 cards sideways (js/alternativa.js) -->
+        <section class="terroir" id="terroir" aria-labelledby="terroir-title">
+          <div class="container terroir-intro">
+            <div>
+              <p class="eyebrow" data-reveal>Terroir y proceso</p>
+              <h2 id="terroir-title" class="display" data-reveal>De la tierra <em>a la taza.</em></h2>
+            </div>
+            <div>
+              <p class="terroir-lead" data-reveal>Cultivamos al borde del bosque, entre 1.200 y 1.750 msnm, donde la humedad del Amboró y la tierra negra hacen posible una calidad singular.</p>
+              <p data-reveal>Sembramos bajo sombra, en antiguos chacos que hoy reforestamos, sin tocar el bosque. Y tenemos la infraestructura y el conocimiento para llevar el café hasta su consumo final.</p>
+            </div>
+          </div>
+          <div class="process-timeline" data-timeline>
+            <div class="process-pin" data-timeline-pin>
+              <div class="process-bg" data-timeline-bg data-src="media/img/proceso-panorama.webp" data-ratio="2.4" aria-hidden="true"></div>
+              <div class="process-veil" aria-hidden="true"></div>
+              <ol class="process-track" data-timeline-track>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/01-germinador.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 01</span>
+                  <h3>Germinador</h3>
+                  <p>Las semillas seleccionadas se siembran en almácigos o camas de arena hasta que brotan en pequeños tallos, llamados «fósforos».</p>
+                  <span class="process-phase">Cultivo</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/02-vivero.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 02</span>
+                  <h3>Vivero</h3>
+                  <p>Las plántulas se trasplantan a bolsas individuales y crecen bajo sombra hasta tener la fuerza para ir al campo.</p>
+                  <span class="process-phase">Cultivo</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/03-cafetal.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 03</span>
+                  <h3>Cafetal</h3>
+                  <p>Los plantines más robustos se siembran en su lugar definitivo, donde el cafeto crece, florece y da cerezas maduras año tras año.</p>
+                  <span class="process-phase">Cultivo</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/04-beneficio-humedo.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 04</span>
+                  <h3>Beneficio húmedo</h3>
+                  <p>En la beneficiadora, con equipos Palini Alves, se despulpan las cerezas para retirar la cáscara y se remueve el mucílago, la capa pegajosa que envuelve el grano.</p>
+                  <span class="process-phase">Beneficio</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/05-secado.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 05</span>
+                  <h3>Secado</h3>
+                  <p>El café en pergamino se extiende al sol o en nuestro secador tipo invernadero hasta bajar su humedad a un nivel estable, cercano al <span class="nowrap">10–12 %</span>.</p>
+                  <span class="process-phase">Beneficio</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/06-trillado.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 06</span>
+                  <h3>Trillado</h3>
+                  <p>Se retira la cáscara de pergamino del grano seco para obtener el café verde, o «café oro», listo para la selección.</p>
+                  <span class="process-phase">Beneficio</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/07-tostado.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 07</span>
+                  <h3>Tostado</h3>
+                  <p>El grano verde se somete a altas temperaturas que transforman su química y liberan su aroma, su cuerpo y su perfil de sabor.</p>
+                  <span class="process-phase">La taza</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/08-molido.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 08</span>
+                  <h3>Molido</h3>
+                  <p>El café tostado se muele al grosor exacto para cada método de preparación: fino, medio o grueso.</p>
+                  <span class="process-phase">La taza</span>
+                </li>
+                <li class="process-card">
+                  <div class="process-figure" data-src="media/proceso/09-filtrado.svg" aria-hidden="true"></div>
+                  <span class="process-num">Paso 09</span>
+                  <h3>Filtrado</h3>
+                  <p>El agua caliente atraviesa el café molido y extrae sus aceites, aromas y sabores. Así nace la taza. <a class="inline-link" href="#graycano">Lo hacemos con Graycano ↘</a></p>
+                  <span class="process-phase">La taza</span>
+                </li>
+              </ol>
+              <div class="process-head" aria-hidden="true">
+                <span class="process-label">El proceso, paso a paso</span>
+                <span class="process-bar"><i data-step-bar></i></span>
+                <span class="process-count"><b data-step-current>01</b> / 09</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Varieties: intro on the left, a strip of tall cards that open on tap -->
+        <section class="varieties" id="variedades" aria-labelledby="varieties-title">
+          <div class="varieties-grid">
+            <div class="varieties-intro" data-reveal>
+              <p class="eyebrow">El banco genético</p>
+              <h2 id="varieties-title">Siete variedades. <em>Una sola altura.</em></h2>
+              <p>Toca una variedad para ver sus notas y pedirla. Unas veinte más están en camino.</p>
+            </div>
+            <ul class="variety-strip">
+              <li class="variety" style="--glow: #ff7f82" data-variety="Gesha">
+                <button type="button" aria-expanded="false"><span class="variety-name">Gesha</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">01</span><p>Dulce, natural y frutas tropicales</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #638c69" data-variety="Acaia">
+                <button type="button" aria-expanded="false"><span class="variety-name">Acaia</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">02</span><p>Kiwi, tumbo y piña</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #f2a400" data-variety="Catucai">
+                <button type="button" aria-expanded="false"><span class="variety-name">Catucai</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">03</span><p>Dulce de leche, papaya y mango</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #98669c" data-variety="Arara">
+                <button type="button" aria-expanded="false"><span class="variety-name">Arara</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">04</span><p>Dulce de leche, papaya y mango</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #ea7749" data-variety="Castillo">
+                <button type="button" aria-expanded="false"><span class="variety-name">Castillo</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">05</span><p>Dulce, natural y frutas tropicales</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #6379c4" data-variety="IPR 103">
+                <button type="button" aria-expanded="false"><span class="variety-name">IPR 103</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">06</span><p>Kiwi, tumbo y piña</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety" style="--glow: #72abae" data-variety="Tupi">
+                <button type="button" aria-expanded="false"><span class="variety-name">Tupi</span><span class="variety-process">Proceso natural</span></button>
+                <div class="variety-detail"><span class="variety-tag">07</span><p>Jazmín, durazno y piña</p><a class="pill pill-cream pill-small" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a></div>
+              </li>
+              <li class="variety variety-soon">
+                <span class="variety-tag">+20</span>
+                <p class="variety-soon-title">Nuevas variedades exóticas</p>
+                <p>Llegan con la próxima cosecha. Las más especiales están por venir.</p>
+              </li>
+            </ul>
+          </div>
+          <p class="container wholesale-note" data-reveal>¿Tienes una cafetería o buscas café verde? Bolsas de 5 kg y lotes en verde. <a class="inline-link" data-whatsapp data-message="Hola, tengo una cafetería y quiero información sobre bolsas de 5 kg o café verde TigreNegro." href="#">Escríbenos ↗</a></p>
+        </section>
+        <!-- Purpose: framed aerial photo with the 1% / 99% line -->
+        <section class="purpose-band" aria-labelledby="purpose-title">
+          <div class="container">
+            <div class="photo-band photo-band-tall">
+              <img src="media/img/reserva-dron.webp" alt="Bosque conservado de la reserva Yanapuma visto desde el aire" loading="lazy" />
+              <div class="photo-band-copy photo-band-copy-left">
+                <p class="eyebrow" data-reveal>Café con propósito</p>
+                <h2 id="purpose-title" class="display" data-reveal>1% cultivado. <em>99% conservado.</em></h2>
+                <div class="purpose-bottom" data-reveal>
+                  <p>Nos limitamos a cultivar como máximo el 1% del territorio que protegemos. Con tan poco espacio, la única forma de crecer es mejorar la calidad.</p>
+                  <a class="pill pill-cream" href="https://giro54bo.github.io/yanapuma-web/" target="_blank" rel="noopener">Conoce Yanapuma <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="stats" id="cifras" aria-labelledby="stats-title">
+          <div class="container">
+            <p class="eyebrow" data-reveal>En cifras</p>
+            <h2 id="stats-title" class="statement-sm" data-reveal>Pequeño por diseño. <em>Preciso por elección.</em></h2>
+            <dl class="stats-grid" data-reveal>
+              <div><dt><span data-count="11">11</span></dt><dd>hectáreas cultivadas</dd></div>
+              <div><dt><span data-count="99">99</span>%</dt><dd>del territorio conservado</dd></div>
+              <div><dt><span data-count="7">7</span></dt><dd>variedades hoy</dd></div>
+              <div><dt>~<span data-count="20">20</span></dt><dd>variedades en camino</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <!-- Proof -->
+        <section class="proof" id="respaldo" aria-labelledby="proof-title">
+          <div class="container proof-grid">
+            <p class="eyebrow" id="proof-title" data-reveal>Respaldo</p>
+            <blockquote data-reveal>Bajo la dirección de Lean Coffee Management, quienes han trabajado con fincas ganadoras de Taza de Excelencia en El Salvador y Guatemala.</blockquote>
+          </div>
+        </section>
+
+        <!-- Visit -->
+        <section class="visit" aria-labelledby="visit-title">
+          <div class="container">
+            <div class="visit-inner">
+              <div><p class="eyebrow" data-reveal>Conoce el origen</p><h2 id="visit-title" class="display" data-reveal>Visita <em>la reserva.</em></h2></div>
+              <a class="circle-link" href="https://giro54bo.github.io/yanapuma-web/#contacto" target="_blank" rel="noopener" data-reveal>Planifica tu visita a Yanapuma <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Graycano: photo beside the copy, the five features as an accordion -->
+        <section class="graycano" id="graycano" aria-labelledby="graycano-title">
+          <div class="container graycano-grid">
+            <figure class="graycano-visual">
+              <img src="media/img/graycano.avif" alt="Gotero Graycano con funda de corcho sobre una jarra de vidrio con café recién filtrado" width="1200" height="746" loading="lazy" />
+            </figure>
+            <div class="graycano-copy">
+              <p class="eyebrow" data-reveal>Método de filtrado</p>
+              <h2 id="graycano-title" class="statement-sm" data-reveal>Graycano. <em>Filtrar el momento.</em></h2>
+              <p class="graycano-lead" data-reveal>Somos representantes de Graycano, la marca alemana de equipos para café de especialidad creada en Leipzig. Su gotero es la forma en que recomendamos preparar TigreNegro.</p>
+              <div class="accordion" data-reveal>
+                <details open>
+                  <summary>Núcleo de aluminio fundido<i aria-hidden="true"></i></summary>
+                  <div class="accordion-body"><p>Prácticamente irrompible. Retiene y reparte el calor para una extracción constante.</p></div>
+                </details>
+                <details>
+                  <summary>Lava Ribs<i aria-hidden="true"></i></summary>
+                  <div class="accordion-body"><p>Nervaduras que guían el agua de forma pareja por la cama de café, para notas más brillantes y dulces.</p></div>
+                </details>
+                <details>
+                  <summary>Cámaras de aire<i aria-hidden="true"></i></summary>
+                  <div class="accordion-body"><p>Atrapan el vapor del filtrado y mantienen estable la temperatura.</p></div>
+                </details>
+                <details>
+                  <summary>Funda de corcho<i aria-hidden="true"></i></summary>
+                  <div class="accordion-body"><p>Hecha a mano en Portugal. Protege las manos y aísla la preparación.</p></div>
+                </details>
+                <details>
+                  <summary>Filtros GC01<i aria-hidden="true"></i></summary>
+                  <div class="accordion-body"><p>Papel de pulpa de madera japonesa, pensado para este gotero.</p></div>
+                </details>
+              </div>
+              <div class="graycano-actions" data-reveal>
+                <a class="pill pill-dark" data-whatsapp data-message="Hola, quiero información sobre los productos Graycano." href="#">Consultar por Graycano <span aria-hidden="true">↗</span></a>
+                <a class="pill pill-outline" href="https://graycano.com/" target="_blank" rel="noopener">graycano.com <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
-    <!-- Footer: one-line order form, then the oversized wordmark -->
-    <footer class="site-footer">
-      <div class="container footer-order">
-        <img class="footer-mark" src="media/logo/circle.svg" alt="" />
-        <h2 id="order-title">Pide tu café</h2>
-        <form class="order-form" data-order aria-labelledby="order-title">
-          <label class="sr-only" for="order-message">Tu pedido</label>
-          <input id="order-message" name="message" type="text" placeholder="Ej.: 2 bolsas de Gesha, en grano" autocomplete="off" />
-          <button type="submit">Enviar <span aria-hidden="true">↗</span></button>
-        </form>
-        <p class="order-note">Te responde nuestro equipo de ventas por WhatsApp.</p>
-      </div>
-      <div class="footer-wordmark logo-mask logo-mask-name" role="img" aria-label="TigreNegro"></div>
-      <div class="container footer-bottom">
-        <p>© TigreNegro · Reserva Yanapuma · 1% cultivado, 99% conservado</p>
-        <div class="footer-links">
-          <a href="index.html">Versión principal</a>
-          <a href="https://instagram.com/tigrenegro.cafe" target="_blank" rel="noopener" aria-label="Instagram de TigreNegro">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
-          </a>
-        </div>
-      </div>
-    </footer>
+        <!-- Footer: closing line and CTA, links, then the oversized wordmark -->
+        <footer class="site-footer">
+          <div class="container footer-closing">
+            <img class="footer-mark" src="media/logo/circle.svg" alt="" />
+            <p class="eyebrow">Quiet intensity</p>
+            <h2>Tu próxima taza <em>empieza aquí.</em></h2>
+            <a class="pill pill-dark" data-whatsapp href="#">Pedir por WhatsApp <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="container footer-links">
+            <div><span class="footer-label">Explora</span><a href="#diferencia">La diferencia</a><a href="#terroir">Terroir y proceso</a><a href="#variedades">Variedades</a><a href="#graycano">Graycano</a></div>
+            <div><span class="footer-label">Conecta</span><a data-whatsapp href="#">WhatsApp ventas ↗</a><a href="https://instagram.com/tigrenegro.cafe" target="_blank" rel="noopener">Instagram ↗</a><a href="https://giro54bo.github.io/yanapuma-web/#contacto" target="_blank" rel="noopener">Planifica tu visita ↗</a></div>
+          </div>
+          <div class="footer-wordmark logo-mask logo-mask-name" role="img" aria-label="TigreNegro"></div>
+          <div class="container footer-bottom">
+            <p>Volcanes · Amboró · Valles Cruceños · Santa Cruz, Bolivia</p>
+            <p>© TigreNegro · Reserva Yanapuma</p>
+          </div>
+        </footer>
   </body>
 </html>
