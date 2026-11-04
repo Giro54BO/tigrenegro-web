@@ -62,8 +62,8 @@ p { text-wrap: pretty; }
 /* Logo: wordmark as a mask so it takes the text color; grain dot on top-left like the original */
 .logo-mask { display: block; background: currentColor; -webkit-mask: url("../media/logo/wordmark.svg") no-repeat center / contain; mask: url("../media/logo/wordmark.svg") no-repeat center / contain; }
 .logo-mask-name { -webkit-mask-image: url("../media/logo/wordmark-name.svg"); mask-image: url("../media/logo/wordmark-name.svg"); }
-.header-brand, .hero-logo, .flight-logo, .footer-brand { position: relative; display: block; aspect-ratio: var(--logo-ratio); }
-.header-brand .logo-mask, .hero-logo .logo-mask, .flight-logo .logo-mask, .footer-brand .logo-mask { position: absolute; inset: 0; }
+.header-brand, .hero-logo, .flight-logo { position: relative; display: block; aspect-ratio: var(--logo-ratio); }
+.header-brand .logo-mask, .hero-logo .logo-mask, .flight-logo .logo-mask { position: absolute; inset: 0; }
 .brand-dot { position: absolute; z-index: 1; top: -34%; left: -6.5%; width: 8%; pointer-events: none; }
 
 /* Header */
@@ -278,7 +278,8 @@ html:not(.js) .process-step { min-height: 0; padding: 1.5rem 0; }
 /* Footer */
 .site-footer { position: relative; overflow: hidden; padding-top: clamp(4.5rem, 8vw, 7rem); color: var(--cream); background: var(--bag-gradient); }
 .footer-top { display: flex; justify-content: space-between; gap: 3rem; }
-.footer-brand { width: min(17rem, 60vw); align-self: start; margin: 1rem 0 0 1.25rem; }
+.footer-brand { display: block; width: clamp(7.5rem, 14vw, 10rem); flex-shrink: 0; align-self: start; }
+.footer-brand img { display: block; width: 100%; height: auto; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 2.5rem clamp(3rem, 9vw, 9rem); }
 .footer-links div { display: flex; flex-direction: column; gap: .9rem; }
 .footer-links a { color: var(--cream); font: .8rem var(--label); letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
