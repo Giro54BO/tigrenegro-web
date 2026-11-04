@@ -8,6 +8,7 @@ Revisión visual del 23 de octubre de 2026. Las rutas son relativas a `Assets/im
 |---|---|---|
 | `About us/DJI_20260902142720_0007_D.jpg` | Dron: valle y serranía con el camino | `reserva-dron.webp` (banda «1% cultivado») |
 | `About us/DJI_20260902143049_0015_D.jpg` | Dron: cerros boscosos | `terroir-dron.webp` (tarjeta «Terroir único») |
+| `About us/DJI_20260902142748_0008_D.jpg` | Dron: serranía con el camino, en franja panorámica | `proceso-panorama.webp` (fondo de la línea de tiempo del proceso, se desplaza en paralaje) |
 | `About us/YANAPUMA SEP93.jpg` | Cafetal bajo sombra | `cultivo-sombra.webp` (banda del mensaje central) |
 | `About us/YANAPUMA SEP98.jpg` | Rama con cerezas rojas | `cerezas.webp` (tarjeta «Variedades exóticas») |
 | `About us/YANAPUMA SEP95.jpg` | Persona junto a las camas de secado | `secado.webp` (tarjeta «Beneficio propio») |
@@ -17,7 +18,7 @@ Revisión visual del 23 de octubre de 2026. Las rutas son relativas a `Assets/im
 
 ## Ilustraciones del proceso
 
-Dibujos de línea en `Proceso/`, vectorizados para la sección «De la tierra a la taza» (`site/media/proceso/`). Se dibujan solos al hacer scroll.
+Dibujos de línea en `Proceso/`, vectorizados para la sección «De la tierra a la taza» (`site/media/proceso/`). Van en tarjetas de una línea de tiempo horizontal y cada dibujo se traza solo cuando su tarjeta entra en pantalla.
 
 | Original | Paso | En el sitio |
 |---|---|---|
@@ -29,13 +30,13 @@ Dibujos de línea en `Proceso/`, vectorizados para la sección «De la tierra a 
 | `Proceso/06-trillado.jpg` | 6. Trillado | `06-trillado.svg` |
 | `Proceso/07-tostado-hd.jpg` | 7. Tostado (versión en alta resolución; reemplaza a `07-tostado.jpg`) | `07-tostado.svg` |
 | `Proceso/08-molido.jpg` | 8. Molido | `08-molido.svg` |
-| — | 9. Filtrado | `09-filtrado.svg` (dibujado a mano en SVG; no había ilustración) |
+| Foto del Graycano (`site/media/img/graycano.avif`) | 9. Filtrado | `09-filtrado.svg` (dibujado en SVG a partir de la foto del Graycano: filtro de corcho sobre la jarra de vidrio) |
 
 Los pasos 1 a 6 y 8 se vectorizaron desde `Proceso/ilustraciones-hoja-limpia.jpg`, una hoja con trazos más limpios. En el tostado se borró la marca «ROABES», que no es real.
 
 ## Disponibles, por tema
 
-- **Paisaje y reserva (dron):** `DJI_…0006`, `…0008`, `…0012`, `…0013`, `…0014`, `…0023`, `…0026`, `…0028`. `…0012` y `…0013` son tomas cenitales con la beneficiadora; `…0054` muestra el techo azul de una estructura en el bosque.
+- **Paisaje y reserva (dron):** `DJI_…0006`, `…0012`, `…0013`, `…0014`, `…0023`, `…0026`, `…0028`. `…0012` y `…0013` son tomas cenitales con la beneficiadora; `…0054` muestra el techo azul de una estructura en el bosque.
 - **Cerros y cafetal con personas:** `SEP100`–`SEP109` (cafetal frente a los farallones), `SEP9`, `SEP92`.
 - **Equipo y visitas:** `SEP111` (equipo completo), `SEP23`, `SEP24`, `SEP3`, `SEP5`, `SEP31`, `SEP56` (blanco y negro), `SEP62` (sendero en el bosque).
 - **Camas de secado en la cima:** `SEP44`–`SEP53`.
