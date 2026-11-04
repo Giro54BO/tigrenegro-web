@@ -90,14 +90,23 @@
   }, { threshold: .6 });
   document.querySelectorAll('[data-count]').forEach((counter) => countObserver.observe(counter));
 
-  // Process scrollytelling: the step crossing the trigger line draws its illustration,
-  // scrubbed by scroll (outlines first, then the traced drawings fill in)
-  const scrolly = document.querySelector('[data-scrolly]');
-  const figures = scrolly ? [...scrolly.querySelectorAll('.process-figure')] : [];
-  const steps = scrolly ? [...scrolly.querySelectorAll('.process-step')] : [];
-  const stepCurrent = scrolly?.querySelector('[data-step-current]');
-  const stepBar = scrolly?.querySelector('[data-step-bar]');
-  const isNarrow = window.matchMedia('(max-width: 860px)');
+  // Process timeline (structure after apocalypsecoffee.com's): the stage pins while vertical
+  // scroll slides the track sideways, and the panorama behind it pans more slowly.
+  // Each card's drawing draws itself, scrubbed by scroll, as the card comes in
+  // (outlines first, then the traced drawings fill in).
+  const timeline = document.querySelector('[data-timeline]');
+  const pin = timeline?.querySelector('[data-timeline-pin]');
+  const track = timeline?.querySelector('[data-timeline-track]');
+  const panorama = timeline?.querySelector('[data-timeline-bg]');
+  const cards = timeline ? [...timeline.querySelectorAll('.process-card')] : [];
+  const figures = cards.map((card) => card.querySelector('.process-figure'));
+  const stepCurrent = timeline?.querySelector('[data-step-current]');
+  const stepBar = timeline?.querySelector('[data-step-bar]');
+  const pinned = Boolean(timeline) && !reduceMotion;
+  if (pinned) timeline.classList.add('is-pinned');
+  let travel = 0;
+  let panoramaTravel = 0;
+  let cardDraws = [];
   let activeStep = -1;
 
   const setDraw = (figure, progress) => {
@@ -125,7 +134,8 @@
     requestUpdate();
   };
 
-  const loadFigures = () => {
+  const loadTimeline = () => {
+    if (panorama) panorama.style.backgroundImage = `url("${panorama.dataset.src}")`;
     figures.forEach((figure) => {
       fetch(figure.dataset.src)
         .then((response) => (response.ok ? response.text() : Promise.reject(response.status)))
@@ -135,40 +145,73 @@
     });
   };
 
-  if (scrolly) {
+  if (timeline) {
     const loadObserver = new IntersectionObserver((entries) => {
       if (!entries.some((entry) => entry.isIntersecting)) return;
       loadObserver.disconnect();
-      loadFigures();
+      loadTimeline();
     }, { rootMargin: '100% 0px' });
-    loadObserver.observe(scrolly);
+    loadObserver.observe(timeline);
   }
 
-  const updateScrolly = (viewport) => {
-    const box = scrolly.getBoundingClientRect();
-    if (box.bottom < -viewport || box.top > viewport * 2) return;
-    // Follow each step's heading: drawing starts as it enters the lower screen and
-    // finishes before it reaches the middle (higher on phones, where the stage sits on top)
-    const start = viewport * .88;
-    const end = viewport * (isNarrow.matches ? .62 : .45);
-    const headingTop = (index) => steps[index].querySelector('h3').getBoundingClientRect().top;
-    let active = 0;
-    steps.forEach((step, index) => { if (headingTop(index) < start) active = index; });
-    const progress = reduceMotion ? 1 : clamp((start - headingTop(active)) / (start - end));
+  // The section is as tall as the stage plus the sideways travel, so one pixel scrolled
+  // moves the track one pixel; a short hold at the end lets the last card rest
+  const measureTimeline = () => {
+    if (!pinned) return;
+    const viewportW = root.clientWidth;
+    const pinHeight = pin.offsetHeight;
+    travel = Math.max(0, track.offsetWidth - viewportW);
+    timeline.style.height = `${pinHeight + travel + pinHeight * .2}px`;
+    // Each card draws over the scroll that brings it fully into view: from the right edge for
+    // cards that slide in, and as the section rises for the first ones, one after another
+    const endGap = parseFloat(getComputedStyle(track).paddingRight) || 0;
+    const risen = track.offsetTop + track.offsetHeight - pinHeight;
+    cardDraws = cards.map((card, index) => {
+      const length = card.offsetWidth + endGap;
+      const slidIn = card.offsetLeft - (viewportW - length);
+      const inView = Math.max(slidIn, risen + index * card.offsetWidth * .55);
+      return { from: inView - length, length, center: card.offsetLeft + card.offsetWidth / 2 };
+    });
+    if (panorama) {
+      const width = Math.max(viewportW, pinHeight * Number(panorama.dataset.ratio || 2));
+      panorama.style.width = `${width}px`;
+      panoramaTravel = width - viewportW;
+    }
+  };
 
-    figures.forEach((figure, index) => {
-      if (index < active) setDraw(figure, 1);
-      else if (index > active) setDraw(figure, 0);
-      else setDraw(figure, progress);
+  const updateTimeline = (viewport) => {
+    const box = timeline.getBoundingClientRect();
+    if (box.bottom < -viewport || box.top > viewport * 2) return;
+    if (!pinned) { figures.forEach((figure) => setDraw(figure, 1)); return; }
+
+    const scrolled = -box.top;
+    const progress = clamp(scrolled / Math.max(1, travel));
+    track.style.transform = `translate3d(${-progress * travel}px, 0, 0)`;
+    if (panorama) panorama.style.transform = `translate3d(${-progress * panoramaTravel}px, 0, 0)`;
+
+    let active = 0;
+    let drawn = 0;
+    cardDraws.forEach(({ from, length }, index) => {
+      const draw = clamp((scrolled - from) / length);
+      setDraw(figures[index], draw);
+      if (draw > .5) active = index;
+      drawn += draw;
     });
     if (active !== activeStep) {
       activeStep = active;
-      figures.forEach((figure, index) => figure.classList.toggle('is-current', index === active));
-      steps.forEach((step, index) => step.classList.toggle('is-active', index === active));
       stepCurrent.textContent = String(active + 1).padStart(2, '0');
     }
-    stepBar.style.transform = `scaleX(${(active + progress) / steps.length})`;
+    stepBar.style.transform = `scaleX(${drawn / cards.length})`;
   };
+
+  // Keyboard focus on a card's link scrolls the page to where that card is in view
+  track?.addEventListener('focusin', (event) => {
+    if (!pinned) return;
+    const index = cards.indexOf(event.target.closest('.process-card'));
+    if (index < 0) return;
+    const offset = clamp(cardDraws[index].center - root.clientWidth / 2, 0, travel);
+    window.scrollTo({ top: timeline.getBoundingClientRect().top + window.scrollY + offset, behavior: 'instant' });
+  });
 
   // Scroll-driven effects, all in one animation frame
   const parallaxItems = [...document.querySelectorAll('[data-parallax]')];
@@ -206,7 +249,7 @@
       header.classList.toggle('logo-docked', docked);
     }
 
-    if (scrolly) updateScrolly(viewport);
+    if (timeline) updateTimeline(viewport);
 
     if (!reduceMotion) {
       parallaxItems.forEach((item) => {
@@ -229,8 +272,10 @@
     ticking = true;
     requestAnimationFrame(() => { update(); ticking = false; });
   };
+  const remeasure = () => { measureTimeline(); requestUpdate(); };
   window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate, { passive: true });
-  document.fonts?.ready.then(requestUpdate);
+  window.addEventListener('resize', remeasure, { passive: true });
+  document.fonts?.ready.then(remeasure);
+  measureTimeline();
   update();
 })();
