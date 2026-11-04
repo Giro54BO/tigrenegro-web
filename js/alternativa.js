@@ -176,7 +176,7 @@
   const stage = document.querySelector('[data-stage]');
   const frame = document.querySelector('[data-stage-frame]');
   const thumbs = [...document.querySelectorAll('.thumb')];
-  frame.classList.add('has-chips');
+  frame.classList.toggle('has-chips', Boolean(document.querySelector('.thumb.is-active[data-chips]')));
   thumbs.forEach((thumb) => thumb.addEventListener('click', () => {
     if (thumb.classList.contains('is-active')) return;
     thumbs.forEach((t) => {

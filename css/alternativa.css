@@ -174,19 +174,21 @@ p { text-wrap: pretty; }
 .wholesale-note { margin-top: 2rem; margin-bottom: 0; color: var(--taupe); }
 .wholesale-note a { color: var(--brown); }
 
-/* Footer (still part of the curtain's paper) */
-.site-footer { position: relative; z-index: 1; overflow: hidden; padding-top: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line); background: var(--paper); }
+/* Footer: dark mode. Brand brown background, off-white text, sand for labels and accents */
+.site-footer { position: relative; z-index: 1; overflow: hidden; padding-top: clamp(4rem, 8vw, 7rem); color: var(--offwhite); background: var(--brown); }
+.site-footer .eyebrow, .site-footer em { color: var(--sand); }
+.site-footer :focus-visible { outline-color: var(--sand); }
 .footer-closing { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .footer-mark { width: 4rem; margin-bottom: 1.5rem; }
 .footer-closing h2 { max-width: 10em; font-size: clamp(2.4rem, 5vw, 4.75rem); line-height: 1; letter-spacing: -.025em; }
 .footer-closing .pill { margin-top: 2.25rem; }
 .footer-links { display: flex; justify-content: center; gap: 2.5rem clamp(3rem, 9vw, 8rem); margin-top: clamp(4rem, 7vw, 6rem); text-align: left; }
 .footer-links div { display: flex; flex-direction: column; gap: .8rem; }
-.footer-links a { font: .76rem var(--label); letter-spacing: .12em; text-transform: uppercase; }
-.footer-links a:hover { color: var(--russet); }
-.footer-label { margin-bottom: .2rem; color: var(--tan); font: .72rem var(--label); letter-spacing: .18em; text-transform: uppercase; }
-.footer-wordmark { width: calc(100% - var(--pad) * 2); margin: clamp(4rem, 8vw, 7rem) auto 0; aspect-ratio: 9.43; color: var(--russet); }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; padding-block: 2.25rem 2rem; color: var(--taupe); font: .7rem var(--label); letter-spacing: .1em; text-transform: uppercase; }
+.footer-links a { font: .76rem var(--label); letter-spacing: .12em; text-transform: uppercase; opacity: .85; transition: opacity .25s ease, color .25s ease; }
+.footer-links a:hover { color: var(--cream); opacity: 1; }
+.footer-label { margin-bottom: .2rem; color: var(--sand); font: .72rem var(--label); letter-spacing: .18em; text-transform: uppercase; }
+.footer-wordmark { width: calc(100% - var(--pad) * 2); margin: clamp(4rem, 8vw, 7rem) auto 0; aspect-ratio: 9.43; color: var(--offwhite); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; margin-top: 2.25rem; padding-block: 1.5rem 2rem; border-top: 1px solid var(--line-dark); color: var(--sand); font: .7rem var(--label); letter-spacing: .1em; text-transform: uppercase; }
 .footer-bottom p { margin: 0; }
 
 /* Light reveal for content inside the curtain */
@@ -266,7 +268,7 @@ p { text-wrap: pretty; }
 .process-track { position: relative; z-index: 1; display: flex; gap: clamp(1.25rem, 3.6vw, 4rem); margin: 0; padding: 0 var(--pad) 1rem; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); scrollbar-width: none; }
 .process-track::-webkit-scrollbar { display: none; }
 .process-card { display: flex; flex-direction: column; flex: 0 0 clamp(18rem, 27vw, 26rem); padding: clamp(1.4rem, 2.2vw, 2.25rem); border-radius: 1rem; color: var(--brown); background: var(--paper); box-shadow: 0 1.75rem 3.5rem rgba(20, 15, 13, .32); scroll-snap-align: start; }
-.process-figure { display: grid; place-items: center; height: clamp(7rem, 26svh, 15rem); margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); color: var(--brown); }
+.process-figure { display: grid; place-items: center; height: clamp(7rem, 26svh, 15rem); margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); color: var(--russet); }
 .process-figure svg, .process-figure img { width: 100%; height: 100%; }
 /* Traced drawings: outlines draw first, then the solid lines fill in */
 .process-figure [data-style="traced"] path { stroke-width: 20; fill-opacity: 0; }
