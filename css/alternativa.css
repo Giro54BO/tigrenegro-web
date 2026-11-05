@@ -197,6 +197,9 @@ p { text-wrap: pretty; }
 
 @media (max-width: 1100px) {
   .header-nav { display: none; }
+  /* With the nav hidden, keep the wordmark centered and the pill on the right */
+  .header-brand { grid-column: 2; }
+  .header-cta { grid-column: 3; }
 }
 
 @media (max-width: 960px) {
@@ -211,7 +214,8 @@ p { text-wrap: pretty; }
   :root { --header-h: 4.25rem; }
   .hide-sm, .scroll-cue { display: none; }
   .header-inner { grid-template-columns: auto 1fr; }
-  .header-brand { width: 7.5rem; }
+  .header-brand { grid-column: 1; width: 7.5rem; }
+  .header-cta { grid-column: 2; }
   .hero-content { padding-bottom: 5rem; }
   .hero-bottom { bottom: 1.5rem; font-size: .66rem; }
   .curtain { border-radius: 1rem 1rem 0 0; }
@@ -224,9 +228,33 @@ p { text-wrap: pretty; }
   .variety { flex-basis: 8.5rem; height: 26rem; }
   .variety.is-open { flex-basis: 16.5rem; }
   .specs div { grid-template-columns: 1fr; gap: .1rem; }
-  .footer-links { justify-content: flex-start; }
+  .footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+  .footer-links div { gap: .35rem; }
+  .footer-links a { padding-block: .35rem; font-size: .7rem; letter-spacing: .1em; line-height: 1.35; text-wrap: balance; }
+  .footer-label { margin-bottom: .1rem; }
   .footer-closing { align-items: flex-start; text-align: left; }
   .footer-bottom { flex-direction: column; }
+  /* Product photo: smaller chips stacked down the right edge so they don't overlap on the 5:4 stage */
+  .info-chip { padding: .5rem .7rem; font-size: .58rem; }
+  .info-chip strong { font-size: .88rem; }
+  .chip-top { top: 6%; right: 4%; }
+  .chip-side { top: 50%; right: 4%; transform: translateY(-50%); }
+  .chip-bottom { bottom: 6%; right: 4%; }
+}
+
+/* Phones held sideways: the hero is only ~375px tall, so the wordmark and spacing shrink to fit */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-content { padding-block: calc(var(--header-h) + .5rem) 3.5rem; }
+  .hero .eyebrow { margin-bottom: .5rem; }
+  .hero-logo { width: min(84vw, 62rem, 95svh); margin-top: .5rem; }
+  .hero-tagline { margin-top: 1rem; }
+  .hero-actions { margin-top: 1rem; }
+  .hero-bottom { bottom: 1rem; }
+}
+
+@media (max-width: 400px) {
+  .hero-bottom { gap: .75rem; letter-spacing: .1em; white-space: nowrap; }
+  .hero-line { width: 1.75rem; flex-shrink: 0; }
 }
 
 /* Framed photo bands (statement, purpose): the photo sits inside the paper with rounded corners */
