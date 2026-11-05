@@ -23,55 +23,18 @@
   const video = document.querySelector('[data-hero-video]');
   if (reduceMotion) video?.pause();
 
-  // Process timeline (same behavior as js/main.js): the stage pins while vertical scroll slides
-  // the track sideways, the panorama pans more slowly behind it, and each card's drawing draws
-  // itself, scrubbed by scroll, as the card comes in (outlines first, then the fill).
+  // Process timeline: a static row of cards you swipe or scroll sideways; the panorama and the
+  // drawings load as the section nears the viewport and show complete (no scroll animation).
   const timeline = document.querySelector('[data-timeline]');
-  const pin = timeline?.querySelector('[data-timeline-pin]');
-  const track = timeline?.querySelector('[data-timeline-track]');
   const panorama = timeline?.querySelector('[data-timeline-bg]');
-  const cards = timeline ? [...timeline.querySelectorAll('.process-card')] : [];
-  const figures = cards.map((card) => card.querySelector('.process-figure'));
-  const stepCurrent = timeline?.querySelector('[data-step-current]');
-  const stepBar = timeline?.querySelector('[data-step-bar]');
-  const pinned = Boolean(timeline) && !reduceMotion;
-  if (pinned) timeline.classList.add('is-pinned');
-  let travel = 0;
-  let panoramaTravel = 0;
-  let cardDraws = [];
-  let activeStep = -1;
-
-  const setDraw = (figure, progress) => {
-    if (!figure.shapes || figure.progress === progress) return;
-    figure.progress = progress;
-    const draw = figure.traced ? clamp(progress / .75) : progress;
-    const fill = clamp((progress - .55) / .45);
-    figure.shapes.forEach(({ el, length }) => {
-      el.style.strokeDashoffset = `${length * (1 - draw)}`;
-      if (figure.traced) el.style.fillOpacity = `${fill}`;
-    });
-  };
-
-  const prepareFigure = (figure) => {
-    const svg = figure.querySelector('svg');
-    if (!svg) return;
-    figure.traced = svg.dataset.style === 'traced';
-    figure.shapes = [...svg.querySelectorAll('path, ellipse, rect, circle, line, polyline')].map((el) => {
-      const length = el.getTotalLength();
-      el.style.strokeDasharray = `${length}`;
-      return { el, length };
-    });
-    figure.progress = null;
-    setDraw(figure, 0);
-    requestUpdate();
-  };
+  const figures = timeline ? [...timeline.querySelectorAll('.process-figure')] : [];
 
   const loadTimeline = () => {
     if (panorama) panorama.style.backgroundImage = `url("${panorama.dataset.src}")`;
     figures.forEach((figure) => {
       fetch(figure.dataset.src)
         .then((response) => (response.ok ? response.text() : Promise.reject(response.status)))
-        .then((markup) => { figure.innerHTML = markup; prepareFigure(figure); })
+        .then((markup) => { figure.innerHTML = markup; })
         // Without fetch (e.g. opened from disk) show the drawing as a still image
         .catch(() => { figure.innerHTML = `<img src="${figure.dataset.src}" alt="" />`; });
     });
@@ -86,63 +49,6 @@
     loadObserver.observe(timeline);
   }
 
-  // The section is as tall as the stage plus the sideways travel, so one pixel scrolled moves
-  // the track one pixel; a short hold at the end lets the last card rest
-  const measureTimeline = () => {
-    if (!pinned) return;
-    const viewportW = root.clientWidth;
-    const pinHeight = pin.offsetHeight;
-    travel = Math.max(0, track.offsetWidth - viewportW);
-    timeline.style.height = `${pinHeight + travel + pinHeight * .2}px`;
-    const endGap = parseFloat(getComputedStyle(track).paddingRight) || 0;
-    const risen = track.offsetTop + track.offsetHeight - pinHeight;
-    cardDraws = cards.map((card, index) => {
-      const length = card.offsetWidth + endGap;
-      const slidIn = card.offsetLeft - (viewportW - length);
-      const inView = Math.max(slidIn, risen + index * card.offsetWidth * .55);
-      return { from: inView - length, length, center: card.offsetLeft + card.offsetWidth / 2 };
-    });
-    if (panorama) {
-      const width = Math.max(viewportW, pinHeight * Number(panorama.dataset.ratio || 2));
-      panorama.style.width = `${width}px`;
-      panoramaTravel = width - viewportW;
-    }
-  };
-
-  const updateTimeline = (viewport) => {
-    const box = timeline.getBoundingClientRect();
-    if (box.bottom < -viewport || box.top > viewport * 2) return;
-    if (!pinned) { figures.forEach((figure) => setDraw(figure, 1)); return; }
-
-    const scrolled = -box.top;
-    const progress = clamp(scrolled / Math.max(1, travel));
-    track.style.transform = `translate3d(${-progress * travel}px, 0, 0)`;
-    if (panorama) panorama.style.transform = `translate3d(${-progress * panoramaTravel}px, 0, 0)`;
-
-    let active = 0;
-    let drawn = 0;
-    cardDraws.forEach(({ from, length }, index) => {
-      const draw = clamp((scrolled - from) / length);
-      setDraw(figures[index], draw);
-      if (draw > .5) active = index;
-      drawn += draw;
-    });
-    if (active !== activeStep) {
-      activeStep = active;
-      stepCurrent.textContent = String(active + 1).padStart(2, '0');
-    }
-    stepBar.style.transform = `scaleX(${drawn / cards.length})`;
-  };
-
-  // Keyboard focus on a card's link scrolls the page to where that card is in view
-  track?.addEventListener('focusin', (event) => {
-    if (!pinned) return;
-    const index = cards.indexOf(event.target.closest('.process-card'));
-    if (index < 0) return;
-    const offset = clamp(cardDraws[index].center - root.clientWidth / 2, 0, travel);
-    window.scrollTo({ top: timeline.getBoundingClientRect().top + window.scrollY + offset, behavior: 'instant' });
-  });
-
   // Scroll-driven effects, all in one animation frame.
   // Sticky hero reveal: as the curtain rises over the pinned hero, --reveal goes 0 → 1; the header
   // turns solid once the curtain reaches it, and the video pauses once fully covered.
@@ -156,20 +62,16 @@
       if (reveal >= 1 && !video.paused) video.pause();
       else if (reveal < 1 && video.paused) video.play().catch(() => {});
     }
-    if (timeline) updateTimeline(viewport);
   };
 
   let ticking = false;
-  function requestUpdate() {
+  const requestUpdate = () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => { update(); ticking = false; });
-  }
-  const remeasure = () => { measureTimeline(); requestUpdate(); };
+  };
   window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', remeasure, { passive: true });
-  document.fonts?.ready.then(remeasure);
-  measureTimeline();
+  window.addEventListener('resize', requestUpdate, { passive: true });
   update();
 
   // Product gallery: thumbnails swap the stage image; the info chips only show on the bag
